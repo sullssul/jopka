@@ -2,7 +2,7 @@ package ru.bash.jopka.mapper;
 
 
 import ru.bash.jopka.Controller.register.dto.RegisterRequest;
-import ru.bash.jopka.database.model.JpaUser;
+import ru.bash.jopka.business.user.repository.jpa.JpaUser;
 
 public class Mapper {
 

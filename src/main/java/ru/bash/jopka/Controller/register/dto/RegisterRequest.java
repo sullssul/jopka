@@ -6,7 +6,6 @@ import java.time.ZonedDateTime;
 
 @Data
 public class RegisterRequest {
-    private String userName;
     private String firstName;
     private String SecondName;
     private String fatherName;

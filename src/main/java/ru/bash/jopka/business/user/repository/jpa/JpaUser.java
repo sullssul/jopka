@@ -1,12 +1,16 @@
-package ru.bash.jopka.database.model;
+package ru.bash.jopka.business.user.repository.jpa;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.bash.jopka.database.model.Organization;
+import ru.bash.jopka.database.model.Picture;
+import ru.bash.jopka.database.model.Role;
 
 import java.time.ZonedDateTime;
 import java.util.Collection;
@@ -14,19 +18,23 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "user")
+@Builder
 @RequiredArgsConstructor
 public class JpaUser implements UserDetails {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String userName;
+    @Column(nullable = false)
     private String firstName;
-    private String SecondName;
+    @Column(nullable = false)
+    private String secondName;
     private String fatherName;
     private ZonedDateTime birthday;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
     private String phone;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -57,7 +65,7 @@ public class JpaUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return email;
     }
 
     @Override
@@ -84,9 +92,8 @@ public class JpaUser implements UserDetails {
     public String toString() {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ", " +
-                "userName = " + userName + ", " +
                 "firstName = " + firstName + ", " +
-                "SecondName = " + SecondName + ", " +
+                "SecondName = " + secondName + ", " +
                 "fatherName = " + fatherName + ", " +
                 "birthday = " + birthday + ", " +
                 "email = " + email + ", " +

@@ -3,6 +3,7 @@ package ru.bash.jopka.database.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
+import ru.bash.jopka.business.user.repository.jpa.JpaUser;
 
 import java.util.Objects;
 
