@@ -1,10 +1,7 @@
 package ru.bash.jopka.business.user.repository.jpa;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,10 +13,10 @@ import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.Set;
 
+
+@Entity(name = "users")
 @Getter
 @Setter
-@Entity(name = "user")
-@Builder
 @RequiredArgsConstructor
 public class JpaUser implements UserDetails {
     @Id
@@ -39,12 +36,11 @@ public class JpaUser implements UserDetails {
     private String phone;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "jpaUser")
     private Set<Picture> pictures;
     @ManyToOne
     @JoinColumn(name = "organization_id", nullable = false)
     private Organization organization;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

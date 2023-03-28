@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import ru.bash.jopka.Controller.register.dto.RegisterRequest;
+import ru.bash.jopka.Controller.dto.RegisterRequest;
 import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.business.user.repository.UserRepository;
 
@@ -16,7 +16,7 @@ public class CreateUserCommand {
     private final VerifyUserQuery verifyUserQuery;
 
     @Transactional
-    private User execute(RegisterRequest request) {
+    public User execute(RegisterRequest request) {
         User user = buildUser(request);
         verifyUserQuery.execute(user);
 

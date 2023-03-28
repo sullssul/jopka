@@ -22,7 +22,7 @@ public class Picture {
     private int ratingValue;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private JpaUser user;
+    private JpaUser jpaUser;
     @ManyToOne
     @JoinColumn(name = "status_id", nullable = false)
     private Status status;

@@ -11,7 +11,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,7 +21,6 @@ public class Role implements GrantedAuthority {
     private String name;
     @Transient
     @ManyToMany(mappedBy = "roles")
-    @ToString.Exclude
     private Set<JpaUser> users;
 
     @Override

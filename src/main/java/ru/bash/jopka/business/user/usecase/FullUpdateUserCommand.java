@@ -10,10 +10,10 @@ import ru.bash.jopka.business.user.repository.UserRepository;
 public class FullUpdateUserCommand {
 
     private final UserRepository repository;
-    private findl
+
 
     public User execute(User original, User copy){
             if(original == copy) return original;
-
+            return null;//todo
     }
 }

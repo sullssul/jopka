@@ -11,7 +11,7 @@ public class FindUserQuery {
 
     private final UserRepository userRepository;
 
-    private User execute(long id) {
+    public User execute(long id) {
         return userRepository.find(id);
     }
 }

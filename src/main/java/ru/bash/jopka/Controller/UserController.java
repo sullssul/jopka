@@ -1,24 +1,34 @@
 package ru.bash.jopka.Controller;
 
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ru.bash.jopka.Controller.base.res.BaseRes;
-import ru.bash.jopka.Controller.register.dto.RegisterRequest;
-import ru.bash.jopka.service.UserService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import ru.bash.jopka.Controller.dto.RegisterRequest;
+import ru.bash.jopka.business.user.UserService;
+import ru.bash.jopka.business.user.model.User;
 
 @RequestMapping("/user")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-    public static final String APPLICATION_JSON_VALUE = "application/json;charset=UTF-8";
     private final UserService userService;
-   @PostMapping(value = "/register" )
-    public ResponseEntity<BaseRes> registerUser(@RequestBody RegisterRequest request){
-        return ResponseBuilder.build(userService.registerUser(request));
+    @PostMapping(value = "/register")
+    public User registerUser(@RequestBody RegisterRequest request) {
+        return userService.registerUser(request);
+    }
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable int id) {
+        User user = userService.findUser(id);
+        if (user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Пользователь не найден!");
+        return user;
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@Positive @PathVariable int id) {
+        return new ResponseEntity<>(userService.delete(id), HttpStatus.OK);
     }
 
 }
