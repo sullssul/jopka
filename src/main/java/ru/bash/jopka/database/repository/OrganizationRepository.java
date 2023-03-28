@@ -6,4 +6,5 @@ import ru.bash.jopka.database.model.Organization;
 
 @Repository
 public interface OrganizationRepository extends JpaRepository<Organization, Long> {
+    Organization findById(long id);
 }

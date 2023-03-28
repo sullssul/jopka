@@ -4,13 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
+import ru.bash.jopka.business.user.repository.jpa.JpaUser;
 
 import java.util.Objects;
 import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -21,7 +21,6 @@ public class Role implements GrantedAuthority {
     private String name;
     @Transient
     @ManyToMany(mappedBy = "roles")
-    @ToString.Exclude
     private Set<JpaUser> users;
 
     @Override

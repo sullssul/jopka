@@ -6,4 +6,5 @@ import ru.bash.jopka.database.model.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findRoleById(Long id);
 }

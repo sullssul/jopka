@@ -1,4 +1,4 @@
-package ru.bash.jopka.Controller.register.dto;
+package ru.bash.jopka.Controller.dto;
 
 import lombok.Data;
 
@@ -6,9 +6,8 @@ import java.time.ZonedDateTime;
 
 @Data
 public class RegisterRequest {
-    private String userName;
     private String firstName;
-    private String SecondName;
+    private String secondName;
     private String fatherName;
     private ZonedDateTime birthday;
     private String email;
