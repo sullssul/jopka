@@ -17,7 +17,7 @@ public class VerifyUserQuery {
     public void execute(User user) {
         User existingUser = userRepository.findByEmail(user.getEmail());
         if (existingUser != null && !Objects.equals(user.getId(), existingUser.getId())){
-             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Пользователь c таким email уже существует!");
+             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Пользователь c таким email уже существует!");
         }
     }
 }

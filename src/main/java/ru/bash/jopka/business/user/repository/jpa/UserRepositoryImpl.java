@@ -6,6 +6,7 @@ import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.business.user.repository.UserRepository;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -46,5 +47,13 @@ public class UserRepositoryImpl implements UserRepository {
                 .stream()
                 .map(mapper::fromJpa)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Set<User> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::fromJpa)
+                .collect(Collectors.toSet());
     }
 }

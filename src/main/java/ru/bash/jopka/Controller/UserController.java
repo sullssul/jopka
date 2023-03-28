@@ -10,20 +10,29 @@ import ru.bash.jopka.Controller.dto.RegisterRequest;
 import ru.bash.jopka.business.user.UserService;
 import ru.bash.jopka.business.user.model.User;
 
+import java.util.Set;
+
 @RequestMapping("/user")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+
     @PostMapping(value = "/register")
     public User registerUser(@RequestBody RegisterRequest request) {
         return userService.registerUser(request);
     }
+
     @GetMapping("/{id}")
     public User getUserById(@PathVariable int id) {
         User user = userService.findUser(id);
         if (user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Пользователь не найден!");
         return user;
+    }
+
+    @GetMapping("/findAll")
+    public Set<User> findAll() {
+        return userService.findAll();
     }
 
     @DeleteMapping("/{id}")

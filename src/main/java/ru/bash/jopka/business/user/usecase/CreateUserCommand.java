@@ -8,6 +8,8 @@ import ru.bash.jopka.Controller.dto.RegisterRequest;
 import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.business.user.repository.UserRepository;
 
+import java.util.ArrayList;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -37,6 +39,7 @@ public class CreateUserCommand {
                 .fatherName(request.getFatherName())
                 .secondName(request.getSecondName())
                 .organizationId(request.getOrganizationId())
+                .picturesId(new ArrayList<>())
                 .build();
     }
 }

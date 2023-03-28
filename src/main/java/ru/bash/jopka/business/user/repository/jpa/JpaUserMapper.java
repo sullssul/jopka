@@ -8,6 +8,7 @@ import ru.bash.jopka.database.repository.OrganizationRepository;
 import ru.bash.jopka.database.repository.PictureRepository;
 import ru.bash.jopka.database.repository.RoleRepository;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,6 @@ import java.util.stream.Collectors;
 public class JpaUserMapper {
     private final RoleRepository roleRepository;//todo
     private final PictureRepository pictureRepository;
-
     private final OrganizationRepository organizationRepository;
 
     public JpaUser toJpa(User user) {
@@ -30,8 +30,8 @@ public class JpaUserMapper {
         jpaUser.setSecondName(user.getSecondName());
         jpaUser.setFatherName(user.getFatherName());
         jpaUser.setRoles(Set.of(roleRepository.findRoleById(user.getRoleId())));
-        jpaUser.setOrganization(Set.of(organizationRepository.find));
-        jpaUser.setPictures(pictureRepository.findPicturesByJpaUser(user.getOrganizationId()));
+        jpaUser.setOrganization(organizationRepository.findById(user.getOrganizationId()));
+        jpaUser.setPictures(getPictures(user.getPicturesId()));
         return jpaUser;
     }
 
@@ -45,8 +45,16 @@ public class JpaUserMapper {
                 .firstName(jpaUser.getFirstName())
                 .secondName(jpaUser.getSecondName())
                 .fatherName(jpaUser.getFatherName())
-                .picturesId(jpaUser.getPictures().stream().map(Picture::getId).collect(Collectors.toSet()))
+                .picturesId(jpaUser.getPictures().stream().map(Picture::getId).collect(Collectors.toList()))
                 .roleId(jpaUser.getRoles().stream().findFirst().orElseThrow(RuntimeException::new).getId())//todo exception
+                .organizationId(jpaUser.getOrganization().getId())
                 .build();
+    }
+
+    private Set<Picture> getPictures(List<Long> picturesIds) {
+        return picturesIds
+                .stream()
+                .map(id -> pictureRepository.findById(id).get())//todo
+                .collect(Collectors.toSet());
     }
 }

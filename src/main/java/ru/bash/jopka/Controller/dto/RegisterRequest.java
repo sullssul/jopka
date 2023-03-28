@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 @Data
 public class RegisterRequest {
     private String firstName;
-    private String SecondName;
+    private String secondName;
     private String fatherName;
     private ZonedDateTime birthday;
     private String email;

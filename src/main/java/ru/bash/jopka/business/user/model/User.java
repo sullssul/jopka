@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -19,5 +21,5 @@ public class User {
     private ZonedDateTime birthday;
     private long roleId;
     private long organizationId;
-    private Set<Long> picturesId;
+    private List<Long> picturesId;
 }
