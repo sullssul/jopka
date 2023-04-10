@@ -15,6 +15,7 @@ import java.util.Set;
 @RequestMapping("/user")
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:3000/")
 public class UserController {
     private final UserService userService;
 
