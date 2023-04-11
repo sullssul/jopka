@@ -1,7 +1,9 @@
 package ru.bash.jopka.business.user.repository.jpa;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +11,6 @@ import ru.bash.jopka.database.model.Organization;
 import ru.bash.jopka.database.model.Picture;
 import ru.bash.jopka.database.model.Role;
 
-import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.Set;
 
@@ -28,7 +29,9 @@ public class JpaUser implements UserDetails {
     @Column(nullable = false)
     private String secondName;
     private String fatherName;
-    private ZonedDateTime birthday;
+    private String city;
+    private String country;
+    private String aboutMe;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
@@ -89,9 +92,11 @@ public class JpaUser implements UserDetails {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ", " +
                 "firstName = " + firstName + ", " +
-                "SecondName = " + secondName + ", " +
+                "secondName = " + secondName + ", " +
                 "fatherName = " + fatherName + ", " +
-                "birthday = " + birthday + ", " +
+                "city = " + city + ", " +
+                "county = " + country + ", " +
+                "aboutMe = " + aboutMe + ", " +
                 "email = " + email + ", " +
                 "password = " + password + ", " +
                 "phone = " + phone + ", " +

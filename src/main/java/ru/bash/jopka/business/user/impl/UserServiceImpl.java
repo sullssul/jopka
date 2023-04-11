@@ -3,6 +3,7 @@ package ru.bash.jopka.business.user.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.bash.jopka.Controller.dto.RegisterRequest;
+import ru.bash.jopka.Controller.dto.UpdateUserRequest;
 import ru.bash.jopka.business.user.UserService;
 import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.business.user.usecase.CreateUserCommand;
@@ -19,6 +20,16 @@ public class UserServiceImpl implements UserService {
     private final DeleteUserCommand deleteUserCommand;
     private final FindUserQuery findUserQuery;
     private final FindAllUsersQuery findAllUsersQuery;
+
+    @Override
+    public User findUserWithFilter(String filterName, String value) {
+        return null;
+    }
+
+    @Override
+    public User updateUser(UpdateUserRequest request) {
+        return null;
+    }
 
     @Override
     public User registerUser(RegisterRequest request) {

@@ -25,7 +25,9 @@ public class JpaUserMapper {
         jpaUser.setEmail(user.getEmail());
         jpaUser.setPhone(user.getPhone());
         jpaUser.setPassword(user.getPassword());
-        jpaUser.setBirthday(user.getBirthday());
+        jpaUser.setCity(user.getCity());
+        jpaUser.setCountry(user.getCountry());
+        jpaUser.setAboutMe(user.getAboutMe());
         jpaUser.setFirstName(user.getFirstName());
         jpaUser.setSecondName(user.getSecondName());
         jpaUser.setFatherName(user.getFatherName());
@@ -41,7 +43,9 @@ public class JpaUserMapper {
                 .email(jpaUser.getEmail())
                 .phone(jpaUser.getPhone())
                 .password(jpaUser.getPassword())
-                .birthday(jpaUser.getBirthday())
+                .city(jpaUser.getCity())
+                .country(jpaUser.getCountry())
+                .aboutMe(jpaUser.getAboutMe())
                 .firstName(jpaUser.getFirstName())
                 .secondName(jpaUser.getSecondName())
                 .fatherName(jpaUser.getFatherName())

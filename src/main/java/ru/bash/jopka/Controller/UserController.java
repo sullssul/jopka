@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.bash.jopka.Controller.dto.RegisterRequest;
+import ru.bash.jopka.Controller.dto.UpdateUserRequest;
 import ru.bash.jopka.business.user.UserService;
 import ru.bash.jopka.business.user.model.User;
 
@@ -22,6 +23,11 @@ public class UserController {
     @PostMapping(value = "/register")
     public User registerUser(@RequestBody RegisterRequest request) {
         return userService.registerUser(request);
+    }
+
+    @PostMapping(value = "/update")
+    public User updateUser(@RequestBody UpdateUserRequest request) {
+        return userService.updateUser(request);
     }
 
     @GetMapping("/{id}")
@@ -40,5 +46,4 @@ public class UserController {
     public ResponseEntity<String> delete(@Positive @PathVariable int id) {
         return new ResponseEntity<>(userService.delete(id), HttpStatus.OK);
     }
-
 }
