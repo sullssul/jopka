@@ -32,7 +32,7 @@ public class RoleController {
     }
 
     @GetMapping("/{id}")
-    public Role getUserById(@PathVariable int id) {
+    public Role getRoleById(@PathVariable int id) {
         Role role = service.findRole(id);
         if (role == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Роль не найдена!");
         return role;

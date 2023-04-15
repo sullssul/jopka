@@ -6,7 +6,6 @@ import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.database.model.Picture;
 import ru.bash.jopka.database.repository.OrganizationRepository;
 import ru.bash.jopka.database.repository.PictureRepository;
-import ru.bash.jopka.database.repository.RoleRepository;
 
 import java.util.List;
 import java.util.Set;
