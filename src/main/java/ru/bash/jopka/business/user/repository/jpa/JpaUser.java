@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.bash.jopka.database.model.Organization;
+import ru.bash.jopka.business.organization.repository.jpa.JpaOrganization;
 import ru.bash.jopka.database.model.Picture;
 import ru.bash.jopka.business.role.repository.jpa.JpaRole;
 
@@ -43,12 +43,14 @@ public class JpaUser implements UserDetails {
     private Set<Picture> pictures;
     @ManyToOne
     @JoinColumn(name = "organization_id", nullable = false)
-    private Organization organization;
+    private JpaOrganization organization;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        JpaUser user = (JpaUser) o;
+        if (o != null) {
+            Hibernate.getClass(this);
+            Hibernate.getClass(o);
+        }
         return false;
     }
 

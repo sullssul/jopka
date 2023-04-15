@@ -1,13 +1,13 @@
-package ru.bash.jopka.business.role.repository.jpa;
+package ru.bash.jopka.business.role.repository.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.role.model.Role;
 import ru.bash.jopka.business.role.repository.RoleRepository;
-import ru.bash.jopka.business.user.model.User;
-import ru.bash.jopka.business.user.repository.jpa.JpaUser;
+import ru.bash.jopka.business.role.repository.jpa.JpaRole;
+import ru.bash.jopka.business.role.repository.jpa.JpaRoleMapper;
+import ru.bash.jopka.business.role.repository.jpa.JpaRoleRepository;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 

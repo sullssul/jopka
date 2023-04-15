@@ -1,9 +1,12 @@
-package ru.bash.jopka.business.user.repository.jpa;
+package ru.bash.jopka.business.user.repository.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.business.user.repository.UserRepository;
+import ru.bash.jopka.business.user.repository.jpa.JpaUser;
+import ru.bash.jopka.business.user.repository.jpa.JpaUserMapper;
+import ru.bash.jopka.business.user.repository.jpa.JpaUserRepository;
 
 import java.util.List;
 import java.util.Set;

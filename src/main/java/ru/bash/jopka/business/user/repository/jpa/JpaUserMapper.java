@@ -2,12 +2,14 @@ package ru.bash.jopka.business.user.repository.jpa;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import ru.bash.jopka.business.organization.OrganizationService;
+import ru.bash.jopka.business.organization.repository.jpa.JpaOrganization;
+import ru.bash.jopka.business.organization.repository.jpa.JpaOrganizationMapper;
 import ru.bash.jopka.business.role.RoleService;
 import ru.bash.jopka.business.role.repository.jpa.JpaRole;
 import ru.bash.jopka.business.role.repository.jpa.JpaRoleMapper;
 import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.database.model.Picture;
-import ru.bash.jopka.database.repository.OrganizationRepository;
 import ru.bash.jopka.database.repository.PictureRepository;
 
 import java.util.List;
@@ -19,8 +21,9 @@ import java.util.stream.Collectors;
 public class JpaUserMapper {
     private final RoleService roleService;
     private final JpaRoleMapper jpaRoleMapper;
+    private final OrganizationService organizationService;
+    private final JpaOrganizationMapper jpaOrganizationMapper;
     private final PictureRepository pictureRepository;
-    private final OrganizationRepository organizationRepository;
 
     public JpaUser toJpa(User user) {
         JpaUser jpaUser = new JpaUser();
@@ -35,14 +38,11 @@ public class JpaUserMapper {
         jpaUser.setSecondName(user.getSecondName());
         jpaUser.setFatherName(user.getFatherName());
         jpaUser.setRoles(getRole(user.getRoleId()));
-        jpaUser.setOrganization(organizationRepository.findById(user.getOrganizationId()));
+        jpaUser.setOrganization(getOrganization(user.getOrganizationId()));
         jpaUser.setPictures(getPictures(user.getPicturesId()));
         return jpaUser;
     }
 
-    private Set<JpaRole> getRole(long roleId) {
-        return Set.of(jpaRoleMapper.toJpa(roleService.findRole(roleId)));
-    }
 
     public User fromJpa(JpaUser jpaUser) {
         return User.builder()
@@ -62,6 +62,13 @@ public class JpaUserMapper {
                 .build();
     }
 
+    private Set<JpaRole> getRole(long roleId) {
+        return Set.of(jpaRoleMapper.toJpa(roleService.find(roleId)));
+    }
+
+    private JpaOrganization getOrganization(long organizationId) {
+        return jpaOrganizationMapper.toJpa(organizationService.find(organizationId));
+    }
     private Set<Picture> getPictures(List<Long> picturesIds) {
         return picturesIds
                 .stream()

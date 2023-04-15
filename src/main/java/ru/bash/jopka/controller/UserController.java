@@ -1,4 +1,4 @@
-package ru.bash.jopka.Controller;
+package ru.bash.jopka.controller;
 
 import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import ru.bash.jopka.Controller.dto.RegisterRequest;
-import ru.bash.jopka.Controller.dto.UpdateUserRequest;
+import ru.bash.jopka.controller.dto.user.RegisterRequest;
+import ru.bash.jopka.controller.dto.user.UpdateUserRequest;
 import ru.bash.jopka.business.user.UserService;
 import ru.bash.jopka.business.user.model.User;
 
@@ -18,32 +18,32 @@ import java.util.Set;
 @RequiredArgsConstructor
 @CrossOrigin("${rest.cross.origin}")
 public class UserController {
-    private final UserService userService;
+    private final UserService service;
 
     @PostMapping(value = "/register")
-    public User registerUser(@RequestBody RegisterRequest request) {
-        return userService.registerUser(request);
+    public User register(@RequestBody RegisterRequest request) {
+        return service.register(request);
     }
 
     @PostMapping(value = "/update")
-    public User updateUser(@RequestBody UpdateUserRequest request) {
-        return userService.updateUser(request);
+    public User update(@RequestBody UpdateUserRequest request) {
+        return service.update(request);
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable int id) {
-        User user = userService.findUser(id);
+    public User findById(@PathVariable int id) {
+        User user = service.find(id);
         if (user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Пользователь не найден!");
         return user;
     }
 
     @GetMapping("/findAll")
     public Set<User> findAll() {
-        return userService.findAll();
+        return service.findAll();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@Positive @PathVariable int id) {
-        return new ResponseEntity<>(userService.delete(id), HttpStatus.OK);
+        return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 }

@@ -1,9 +1,6 @@
-package ru.bash.jopka.database.model;
+package ru.bash.jopka.business.organization.repository.jpa;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -16,10 +13,12 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Table(name="organization")
 @RequiredArgsConstructor
-public class Organization {
+public class JpaOrganization {
     @Id
     @Column(name = "organization_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
@@ -30,7 +29,7 @@ public class Organization {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Organization that = (Organization) o;
+        JpaOrganization that = (JpaOrganization) o;
         return id != null && Objects.equals(id, that.id);
     }
 

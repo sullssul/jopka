@@ -2,8 +2,8 @@ package ru.bash.jopka.business.role.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.bash.jopka.Controller.dto.CreateRoleRequest;
-import ru.bash.jopka.Controller.dto.UpdateRoleRequest;
+import ru.bash.jopka.controller.dto.role.CreateRoleRequest;
+import ru.bash.jopka.controller.dto.role.UpdateRoleRequest;
 import ru.bash.jopka.business.role.RoleService;
 import ru.bash.jopka.business.role.model.Role;
 import ru.bash.jopka.business.role.usecase.*;
@@ -13,34 +13,34 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class RoleServiceImpl implements RoleService {
-    private final CreateRoleCommand createRoleCommand;
-    private final DeleteRoleCommand deleteRoleCommand;
-    private final UpdateRoleCommand updateRoleCommand;
-    private final FindRoleQuery findRoleQuery;
-    private final FindAllRolesQuery findAllRolesQuery;
+    private final CreateRoleCommand createCommand;
+    private final DeleteRoleCommand deleteCommand;
+    private final UpdateRoleCommand updateCommand;
+    private final FindRoleQuery findQuery;
+    private final FindAllRolesQuery findAllQuery;
     @Override
-    public Role updateRole(UpdateRoleRequest request) {
-        return updateRoleCommand.execute(request);
+    public Role update(UpdateRoleRequest request) {
+        return updateCommand.execute(request);
     }
 
     @Override
-    public Role createRole(CreateRoleRequest request) {
-        return createRoleCommand.execute(request);
+    public Role create(CreateRoleRequest request) {
+        return createCommand.execute(request);
     }
 
     @Override
-    public Role findRole(long id) {
-        return findRoleQuery.execute(id);
+    public Role find(long id) {
+        return findQuery.execute(id);
     }
 
     @Override
     public String delete(long id) {
-        deleteRoleCommand.execute(id);
+        deleteCommand.execute(id);
         return "Роль успешна удалена";
     }
 
     @Override
     public Set<Role> findAll() {
-        return findAllRolesQuery.execute();
+        return findAllQuery.execute();
     }
 }

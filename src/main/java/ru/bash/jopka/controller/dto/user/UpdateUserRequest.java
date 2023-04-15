@@ -1,4 +1,4 @@
-package ru.bash.jopka.Controller.dto;
+package ru.bash.jopka.controller.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

@@ -1,4 +1,4 @@
-package ru.bash.jopka.Controller;
+package ru.bash.jopka.controller;
 
 import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import ru.bash.jopka.Controller.dto.CreateRoleRequest;
-import ru.bash.jopka.Controller.dto.UpdateRoleRequest;
+import ru.bash.jopka.controller.dto.role.CreateRoleRequest;
+import ru.bash.jopka.controller.dto.role.UpdateRoleRequest;
 import ru.bash.jopka.business.role.RoleService;
 import ru.bash.jopka.business.role.model.Role;
 
@@ -22,18 +22,18 @@ public class RoleController {
     private final RoleService service;
 
     @PostMapping(value = "/create")
-    public Role createRole(@RequestBody CreateRoleRequest request) {
-        return service.createRole(request);
+    public Role create(@RequestBody CreateRoleRequest request) {
+        return service.create(request);
     }
 
     @PostMapping(value = "/update")
-    public Role updateRole(@RequestBody UpdateRoleRequest request) {
-        return service.updateRole(request);
+    public Role update(@RequestBody UpdateRoleRequest request) {
+        return service.update(request);
     }
 
     @GetMapping("/{id}")
-    public Role getRoleById(@PathVariable int id) {
-        Role role = service.findRole(id);
+    public Role findById(@PathVariable int id) {
+        Role role = service.find(id);
         if (role == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Роль не найдена!");
         return role;
     }
