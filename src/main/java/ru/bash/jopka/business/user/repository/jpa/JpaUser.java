@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.bash.jopka.database.model.Organization;
 import ru.bash.jopka.database.model.Picture;
-import ru.bash.jopka.database.model.Role;
+import ru.bash.jopka.business.role.repository.jpa.JpaRole;
 
 import java.util.Collection;
 import java.util.Set;
@@ -38,7 +38,7 @@ public class JpaUser implements UserDetails {
     private String password;
     private String phone;
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    private Set<JpaRole> roles;
     @OneToMany(mappedBy = "jpaUser")
     private Set<Picture> pictures;
     @ManyToOne

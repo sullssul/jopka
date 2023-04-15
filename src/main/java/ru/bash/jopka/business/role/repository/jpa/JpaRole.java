@@ -1,4 +1,4 @@
-package ru.bash.jopka.database.model;
+package ru.bash.jopka.business.role.repository.jpa;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,7 +14,8 @@ import java.util.Set;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Role implements GrantedAuthority {
+@Table(name = "role")
+public class JpaRole implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -32,7 +33,7 @@ public class Role implements GrantedAuthority {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Role role = (Role) o;
+        JpaRole role = (JpaRole) o;
         return id != null && Objects.equals(id, role.id);
     }
 
