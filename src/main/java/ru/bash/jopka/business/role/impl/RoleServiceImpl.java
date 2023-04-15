@@ -7,10 +7,6 @@ import ru.bash.jopka.Controller.dto.UpdateRoleRequest;
 import ru.bash.jopka.business.role.RoleService;
 import ru.bash.jopka.business.role.model.Role;
 import ru.bash.jopka.business.role.usecase.*;
-import ru.bash.jopka.business.user.usecase.CreateUserCommand;
-import ru.bash.jopka.business.user.usecase.DeleteUserCommand;
-import ru.bash.jopka.business.user.usecase.FindAllUsersQuery;
-import ru.bash.jopka.business.user.usecase.FindUserQuery;
 
 import java.util.Set;
 
@@ -33,12 +29,12 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role findRole(int id) {
+    public Role findRole(long id) {
         return findRoleQuery.execute(id);
     }
 
     @Override
-    public String delete(int id) {
+    public String delete(long id) {
         deleteRoleCommand.execute(id);
         return "Роль успешна удалена";
     }

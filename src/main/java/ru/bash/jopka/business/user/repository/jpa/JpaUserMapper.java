@@ -2,6 +2,9 @@ package ru.bash.jopka.business.user.repository.jpa;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import ru.bash.jopka.business.role.RoleService;
+import ru.bash.jopka.business.role.repository.jpa.JpaRole;
+import ru.bash.jopka.business.role.repository.jpa.JpaRoleMapper;
 import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.database.model.Picture;
 import ru.bash.jopka.database.repository.OrganizationRepository;
@@ -14,7 +17,8 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class JpaUserMapper {
-    private final RoleRepository roleRepository;//todo
+    private final RoleService roleService;
+    private final JpaRoleMapper jpaRoleMapper;
     private final PictureRepository pictureRepository;
     private final OrganizationRepository organizationRepository;
 
@@ -30,10 +34,14 @@ public class JpaUserMapper {
         jpaUser.setFirstName(user.getFirstName());
         jpaUser.setSecondName(user.getSecondName());
         jpaUser.setFatherName(user.getFatherName());
-        jpaUser.setRoles(Set.of(roleRepository.findRoleById(user.getRoleId())));
+        jpaUser.setRoles(getRole(user.getRoleId()));
         jpaUser.setOrganization(organizationRepository.findById(user.getOrganizationId()));
         jpaUser.setPictures(getPictures(user.getPicturesId()));
         return jpaUser;
+    }
+
+    private Set<JpaRole> getRole(long roleId) {
+        return Set.of(jpaRoleMapper.toJpa(roleService.findRole(roleId)));
     }
 
     public User fromJpa(JpaUser jpaUser) {

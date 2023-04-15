@@ -9,7 +9,7 @@ import java.util.Set;
 public interface RoleService {
     Role updateRole(UpdateRoleRequest request);
     Role createRole(CreateRoleRequest request);
-    Role findRole(int id);
-    String delete(int id);
+    Role findRole(long id);
+    String delete(long id);
     Set<Role> findAll();
 }

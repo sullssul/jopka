@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class UpdateRoleRequest {
 
-    private Long id;
+    private long id;
     private String name;
 }
