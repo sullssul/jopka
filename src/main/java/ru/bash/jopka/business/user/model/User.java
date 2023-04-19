@@ -3,6 +3,7 @@ package ru.bash.jopka.business.user.model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -18,6 +19,7 @@ public class User {
     private String city;
     private String country;
     private String aboutMe;
+    private LocalDate birthday;
     private long roleId;
     private long organizationId;
     private List<Long> picturesId;

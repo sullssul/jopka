@@ -34,6 +34,7 @@ public class CreateUserCommand {
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .roleId(request.getRoleId())
+                .birthday(request.getBirthday())
                 .country(request.getCountry())
                 .city(request.getCity())
                 .aboutMe(request.getAboutMe())

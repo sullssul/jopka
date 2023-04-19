@@ -38,6 +38,7 @@ public class JpaUserMapper {
         jpaUser.setSecondName(user.getSecondName());
         jpaUser.setFatherName(user.getFatherName());
         jpaUser.setRoles(getRole(user.getRoleId()));
+        jpaUser.setBirthday(user.getBirthday());
         jpaUser.setOrganization(getOrganization(user.getOrganizationId()));
         jpaUser.setPictures(getPictures(user.getPicturesId()));
         return jpaUser;
@@ -53,6 +54,7 @@ public class JpaUserMapper {
                 .city(jpaUser.getCity())
                 .country(jpaUser.getCountry())
                 .aboutMe(jpaUser.getAboutMe())
+                .birthday(jpaUser.getBirthday())
                 .firstName(jpaUser.getFirstName())
                 .secondName(jpaUser.getSecondName())
                 .fatherName(jpaUser.getFatherName())

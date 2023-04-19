@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class RegisterRequest {
     @NotEmpty(message = "First name cannot be empty")
@@ -15,6 +17,7 @@ public class RegisterRequest {
     private String city;
     private String country;
     private String aboutMe;
+    private LocalDate birthday;
     @Email(message = "Не валидное значение email!", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     @NotEmpty(message = "Email cannot be empty")
     private String email;

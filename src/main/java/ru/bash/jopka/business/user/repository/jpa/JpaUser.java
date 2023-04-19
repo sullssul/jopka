@@ -11,6 +11,7 @@ import ru.bash.jopka.business.organization.repository.jpa.JpaOrganization;
 import ru.bash.jopka.database.model.Picture;
 import ru.bash.jopka.business.role.repository.jpa.JpaRole;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Set;
 
@@ -31,6 +32,7 @@ public class JpaUser implements UserDetails {
     private String fatherName;
     private String city;
     private String country;
+    private LocalDate birthday;
     private String aboutMe;
     @Column(nullable = false)
     private String email;

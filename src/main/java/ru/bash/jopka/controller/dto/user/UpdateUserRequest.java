@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 public class UpdateUserRequest {
@@ -12,7 +13,7 @@ public class UpdateUserRequest {
     @NotEmpty(message = "Second name cannot be empty")
     private String secondName;
     private String fatherName;
-    private ZonedDateTime birthday;
+    private LocalDate birthday;
     @Email(message = "Не валидное значение email!", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     @NotEmpty(message = "Email cannot be empty")
     private String email;
