@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 import org.hibernate.Hibernate;
+import ru.bash.jopka.business.picture.repository.jpa.JpaPicture;
 
 import java.util.Objects;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class Nomination {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "nomination")
-    private Set<Picture> pictures;
+    private Set<JpaPicture> pictures;
 
     @Override
     public boolean equals(Object o) {

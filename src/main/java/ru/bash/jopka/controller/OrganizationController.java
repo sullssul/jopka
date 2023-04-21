@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.bash.jopka.business.organization.OrganizationService;
 import ru.bash.jopka.business.organization.model.Organization;
-import ru.bash.jopka.controller.dto.Organization.CreateOrganizationRequest;
-import ru.bash.jopka.controller.dto.Organization.UpdateOrganizationRequest;
+import ru.bash.jopka.controller.dto.organization.CreateOrganizationRequest;
+import ru.bash.jopka.controller.dto.organization.UpdateOrganizationRequest;
 
 import java.util.Set;
 @RequestMapping("/organization")
@@ -17,7 +17,6 @@ import java.util.Set;
 @RequiredArgsConstructor
 @CrossOrigin("${rest.cross.origin}")
 public class OrganizationController {
-
     private final OrganizationService service;
 
     @PostMapping(value = "/create")

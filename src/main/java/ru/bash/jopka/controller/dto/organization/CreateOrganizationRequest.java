@@ -1,4 +1,4 @@
-package ru.bash.jopka.controller.dto.Organization;
+package ru.bash.jopka.controller.dto.organization;
 
 import lombok.Data;
 

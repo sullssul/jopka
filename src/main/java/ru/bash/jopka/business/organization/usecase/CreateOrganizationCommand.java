@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.organization.model.Organization;
 import ru.bash.jopka.business.organization.repository.OrganizationRepository;
-import ru.bash.jopka.controller.dto.Organization.CreateOrganizationRequest;
+import ru.bash.jopka.controller.dto.organization.CreateOrganizationRequest;
 
 @Slf4j
 @Component

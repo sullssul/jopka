@@ -8,7 +8,7 @@ import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.bash.jopka.business.organization.repository.jpa.JpaOrganization;
-import ru.bash.jopka.database.model.Picture;
+import ru.bash.jopka.business.picture.repository.jpa.JpaPicture;
 import ru.bash.jopka.business.role.repository.jpa.JpaRole;
 
 import java.time.LocalDate;
@@ -42,7 +42,7 @@ public class JpaUser implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<JpaRole> roles;
     @OneToMany(mappedBy = "jpaUser")
-    private Set<Picture> pictures;
+    private Set<JpaPicture> pictures;
     @ManyToOne
     @JoinColumn(name = "organization_id", nullable = false)
     private JpaOrganization organization;

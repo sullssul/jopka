@@ -1,7 +1,7 @@
 package ru.bash.jopka.business.organization;
 
-import ru.bash.jopka.controller.dto.Organization.CreateOrganizationRequest;
-import ru.bash.jopka.controller.dto.Organization.UpdateOrganizationRequest;
+import ru.bash.jopka.controller.dto.organization.CreateOrganizationRequest;
+import ru.bash.jopka.controller.dto.organization.UpdateOrganizationRequest;
 import ru.bash.jopka.business.organization.model.Organization;
 
 import java.util.Set;

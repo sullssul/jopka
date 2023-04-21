@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
+import ru.bash.jopka.business.picture.repository.jpa.JpaPicture;
 
 import java.util.Objects;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class Status {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "status")
-    private Set<Picture> pictures;
+    private Set<JpaPicture> pictures;
 
     @Override
     public boolean equals(Object o) {
