@@ -3,16 +3,22 @@ package ru.bash.jopka.controller.dto.user;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
+import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
+import java.util.List;
 
+@Data
 public class UpdateUserRequest {
+    private long id;
     @NotEmpty(message = "First name cannot be empty")
     private String firstName;
     @NotEmpty(message = "Second name cannot be empty")
     private String secondName;
     private String fatherName;
+    private String city;
+    private String country;
+    private String aboutMe;
     private LocalDate birthday;
     @Email(message = "Не валидное значение email!", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     @NotEmpty(message = "Email cannot be empty")

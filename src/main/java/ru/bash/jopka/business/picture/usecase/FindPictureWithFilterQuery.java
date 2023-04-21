@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
-public class FindWithFilterQuery {
+public class FindPictureWithFilterQuery {
     private final PictureRepository repository;
     public Set<Picture> execute(FindPictureWithFilterRequest request) {
         return repository.findByCriteriaQuery(

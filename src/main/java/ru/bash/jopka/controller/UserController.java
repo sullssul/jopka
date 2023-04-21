@@ -6,6 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import ru.bash.jopka.business.picture.model.Picture;
+import ru.bash.jopka.controller.dto.picture.FindPictureWithFilterRequest;
+import ru.bash.jopka.controller.dto.user.FindUserWithFilterRequest;
 import ru.bash.jopka.controller.dto.user.RegisterRequest;
 import ru.bash.jopka.controller.dto.user.UpdateUserRequest;
 import ru.bash.jopka.business.user.UserService;
@@ -35,6 +38,10 @@ public class UserController {
         User user = service.find(id);
         if (user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Пользователь не найден!");
         return user;
+    }
+    @PostMapping(value = "/find")
+    public Set<User> findByFilter(@RequestBody FindUserWithFilterRequest request) {
+        return service.findWithFilter(request);
     }
 
     @GetMapping("/findAll")

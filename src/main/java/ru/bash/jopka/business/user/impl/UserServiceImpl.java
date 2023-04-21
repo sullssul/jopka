@@ -2,14 +2,13 @@ package ru.bash.jopka.business.user.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.bash.jopka.business.picture.usecase.FindPictureWithFilterQuery;
+import ru.bash.jopka.business.user.usecase.*;
+import ru.bash.jopka.controller.dto.user.FindUserWithFilterRequest;
 import ru.bash.jopka.controller.dto.user.RegisterRequest;
 import ru.bash.jopka.controller.dto.user.UpdateUserRequest;
 import ru.bash.jopka.business.user.UserService;
 import ru.bash.jopka.business.user.model.User;
-import ru.bash.jopka.business.user.usecase.CreateUserCommand;
-import ru.bash.jopka.business.user.usecase.DeleteUserCommand;
-import ru.bash.jopka.business.user.usecase.FindAllUsersQuery;
-import ru.bash.jopka.business.user.usecase.FindUserQuery;
 
 import java.util.Set;
 
@@ -18,17 +17,19 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
     private final CreateUserCommand createUserCommand;
     private final DeleteUserCommand deleteUserCommand;
+    private final UpdateUserCommand updateCommand;
     private final FindUserQuery findUserQuery;
     private final FindAllUsersQuery findAllUsersQuery;
+    private final FindUserWithFilterQuery findWithFilterQuery;
 
     @Override
-    public User findWithFilter(String filterName, String value) {
-        return null;
+    public Set<User> findWithFilter(FindUserWithFilterRequest request) {
+        return findWithFilterQuery.execute(request);
     }
 
     @Override
     public User update(UpdateUserRequest request) {
-        return null;
+        return updateCommand.execute(request);
     }
 
     @Override
