@@ -19,7 +19,6 @@ public class PictureServiceImpl implements PictureService {
     private final UpdatePictureCommand updateCommand;
     private final FindPictureQuery findQuery;
     private final FindAllPicturesQuery findAllQuery;
-
     private final FindWithFilterQuery findWithFilterQuery;
 
     @Override
