@@ -16,6 +16,7 @@ import ru.bash.jopka.business.user.repository.jpa.JpaUser_;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -35,10 +36,9 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         return repository.findByEmail(email)
-                .map(mapper::fromJpa)
-                .orElse(null);
+                .map(mapper::fromJpa);
     }
 
     @Override

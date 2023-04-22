@@ -12,9 +12,9 @@ import ru.bash.jopka.controller.dto.organization.CreateOrganizationRequest;
 import ru.bash.jopka.controller.dto.organization.UpdateOrganizationRequest;
 
 import java.util.Set;
-@RequestMapping("/organization")
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/organization")
 @CrossOrigin("${rest.cross.origin}")
 public class OrganizationController {
     private final OrganizationService service;

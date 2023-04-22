@@ -8,6 +8,7 @@ import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.business.user.repository.UserRepository;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -15,8 +16,8 @@ public class VerifyUserQuery {
     private final UserRepository userRepository;
 
     public void execute(User user) {
-        User existingUser = userRepository.findByEmail(user.getEmail());
-        if (existingUser != null && !Objects.equals(user.getId(), existingUser.getId())){
+        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser.isPresent() && !Objects.equals(user.getId(), existingUser.get().getId())){
              throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Пользователь c таким email уже существует!");
         }
     }

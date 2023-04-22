@@ -13,9 +13,9 @@ import ru.bash.jopka.business.role.model.Role;
 
 import java.util.Set;
 
-@RequestMapping("/role")
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/role")
 @CrossOrigin("${rest.cross.origin}")
 public class RoleController {
 

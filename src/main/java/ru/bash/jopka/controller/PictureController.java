@@ -13,7 +13,7 @@ import ru.bash.jopka.controller.dto.picture.FindPictureWithFilterRequest;
 import ru.bash.jopka.controller.dto.picture.UpdatePictureRequest;
 
 import java.util.Set;
-@RequestMapping("/picture")
+@RequestMapping("/api/picture")
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin("${rest.cross.origin}")

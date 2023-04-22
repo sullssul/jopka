@@ -16,7 +16,7 @@ import ru.bash.jopka.business.user.model.User;
 
 import java.util.Set;
 
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin("${rest.cross.origin}")

@@ -3,6 +3,8 @@ package ru.bash.jopka.business.user.usecase;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.controller.dto.user.RegisterRequest;
 import ru.bash.jopka.business.user.model.User;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class CreateUserCommand {
     private final UserRepository userRepository;
     private final VerifyUserQuery verifyUserQuery;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public User execute(RegisterRequest request) {
@@ -30,7 +33,7 @@ public class CreateUserCommand {
     private User buildUser(RegisterRequest request) {
         return User.builder()
                 .id(0L)
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .roleId(request.getRoleId())
