@@ -41,7 +41,7 @@ public class JpaUser implements UserDetails {
     private String phone;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<JpaRole> roles;
-    @OneToMany(mappedBy = "jpaUser")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "jpaUser")
     private Set<JpaPicture> pictures;
     @ManyToOne
     @JoinColumn(name = "organization_id", nullable = false)

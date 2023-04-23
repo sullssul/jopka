@@ -1,5 +1,6 @@
 package ru.bash.jopka.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -8,14 +9,22 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import ru.bash.jopka.security.JwtAuthenticationEntryPoint;
+import ru.bash.jopka.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
+    private final JwtAuthenticationEntryPoint authenticationEntryPoint;
+    private final JwtAuthenticationFilter authenticationFilter;
+
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
@@ -30,16 +39,32 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http
-            .csrf().disable()
-            .cors().disable()
-            .formLogin().disable()
-            .authorizeHttpRequests()
-            .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-            .requestMatchers("/api/auth/**").permitAll()
-            .requestMatchers("/api/user/register").permitAll()
-                .requestMatchers("/api/**").permitAll()
-            .anyRequest().authenticated();
+//        http
+//                .csrf().disable()
+//                .authorizeHttpRequests(auth -> {
+//                    auth.requestMatchers(HttpMethod.GET, "/api/**").permitAll();
+//                    auth.requestMatchers("/api/auth/**").permitAll();
+//                    auth.requestMatchers("/api/user/register").permitAll();
+//                    auth.anyRequest().authenticated();
+//
+//                });
+        http.csrf().disable()
+                .authorizeHttpRequests((authorize) ->
+                        //authorize.anyRequest().authenticated()
+                        authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                                //.requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
+                                .requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers("/api/user/register").permitAll()
+                                .anyRequest().authenticated()
+
+                ).exceptionHandling( exception -> exception
+                        .authenticationEntryPoint(authenticationEntryPoint)
+                ).sessionManagement( session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                );
+
+
+        http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

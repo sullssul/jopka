@@ -1,4 +1,4 @@
-package ru.bash.jopka.model;
+package ru.bash.jopka.database.model;
 
 import jakarta.persistence.metamodel.SetAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
