@@ -31,15 +31,15 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf().disable()
-                .cors().disable()
-                .formLogin().disable()
-                .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/user/register").permitAll()
-                .anyRequest().permitAll();
-          //     .anyRequest().authenticated();
+            .csrf().disable()
+            .cors().disable()
+            .formLogin().disable()
+            .authorizeHttpRequests()
+            .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+            .requestMatchers("/api/auth/**").permitAll()
+            .requestMatchers("/api/user/register").permitAll()
+                .requestMatchers("/api/**").permitAll()
+            .anyRequest().authenticated();
 
         return http.build();
     }
