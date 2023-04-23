@@ -38,7 +38,8 @@ public class WebSecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/user/register").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
+          //     .anyRequest().authenticated();
 
         return http.build();
     }
