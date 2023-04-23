@@ -1,6 +1,5 @@
 package ru.bash.jopka.config;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -29,17 +28,17 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.csrf().disable()
-                .authorizeHttpRequests((authorize) ->
-                        //authorize.anyRequest().authenticated()
-                        authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                                .requestMatchers("/api/auth/**").permitAll()
-                                .requestMatchers("/api/user/register").permitAll()
-                                .anyRequest().authenticated() //todo check path
-
-                );
+        http
+                .csrf().disable()
+                .cors().disable()
+                .formLogin().disable()
+                .authorizeHttpRequests()
+                .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/user/register").permitAll()
+                .anyRequest().authenticated();
 
         return http.build();
     }

@@ -24,6 +24,7 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
                         request.getPassword())
+
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
