@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.business.picture.repository.PictureRepository;
-import ru.bash.jopka.controller.dto.picture.UpdatePictureRequest;
+import ru.bash.jopka.controller.picture.dto.UpdatePictureRequest;
 
 @Component
 @RequiredArgsConstructor

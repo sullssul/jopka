@@ -1,7 +1,8 @@
-package ru.bash.jopka.controller.dto.user;
+package ru.bash.jopka.controller.user.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
@@ -14,9 +15,12 @@ public class RegisterRequest {
     @NotEmpty(message = "Second name cannot be empty")
     private String secondName;
     private String fatherName;
+    @NotEmpty
     private String city;
+    @NotEmpty
     private String country;
     private String aboutMe;
+    @NotNull
     private LocalDate birthday;
     @Email(message = "Не валидное значение email!", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     @NotEmpty(message = "Email cannot be empty")

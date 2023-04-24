@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.status.model.Status;
 import ru.bash.jopka.business.status.repository.StatusRepository;
-import ru.bash.jopka.controller.dto.status.CreateStatusRequest;
+import ru.bash.jopka.controller.status.dto.CreateStatusRequest;
 
 @Slf4j
 @Component

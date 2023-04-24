@@ -2,11 +2,10 @@ package ru.bash.jopka.business.user.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.bash.jopka.business.picture.usecase.FindPictureWithFilterQuery;
 import ru.bash.jopka.business.user.usecase.*;
-import ru.bash.jopka.controller.dto.user.FindUserWithFilterRequest;
-import ru.bash.jopka.controller.dto.user.RegisterRequest;
-import ru.bash.jopka.controller.dto.user.UpdateUserRequest;
+import ru.bash.jopka.controller.user.dto.FindUserWithFilterRequest;
+import ru.bash.jopka.controller.user.dto.RegisterRequest;
+import ru.bash.jopka.controller.user.dto.UpdateUserRequest;
 import ru.bash.jopka.business.user.UserService;
 import ru.bash.jopka.business.user.model.User;
 

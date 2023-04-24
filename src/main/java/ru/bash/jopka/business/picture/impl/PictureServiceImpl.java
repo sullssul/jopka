@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 import ru.bash.jopka.business.picture.PictureService;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.business.picture.usecase.*;
-import ru.bash.jopka.controller.dto.picture.CreatePictureRequest;
-import ru.bash.jopka.controller.dto.picture.FindPictureWithFilterRequest;
-import ru.bash.jopka.controller.dto.picture.UpdatePictureRequest;
+import ru.bash.jopka.controller.picture.dto.CreatePictureRequest;
+import ru.bash.jopka.controller.picture.dto.FindPictureWithFilterRequest;
+import ru.bash.jopka.controller.picture.dto.UpdatePictureRequest;
 
 import java.util.Set;
 

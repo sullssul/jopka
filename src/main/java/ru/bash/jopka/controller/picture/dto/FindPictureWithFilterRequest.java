@@ -1,4 +1,4 @@
-package ru.bash.jopka.controller.dto.picture;
+package ru.bash.jopka.controller.picture.dto;
 
 import lombok.Data;
 

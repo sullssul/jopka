@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.status.model.Status;
 import ru.bash.jopka.business.status.repository.StatusRepository;
-import ru.bash.jopka.controller.dto.status.UpdateStatusRequest;
+import ru.bash.jopka.controller.status.dto.UpdateStatusRequest;
 
 @Component
 @RequiredArgsConstructor

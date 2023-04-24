@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import ru.bash.jopka.business.organization.OrganizationService;
 import ru.bash.jopka.business.organization.model.Organization;
 import ru.bash.jopka.business.organization.usecase.*;
-import ru.bash.jopka.controller.dto.organization.CreateOrganizationRequest;
-import ru.bash.jopka.controller.dto.organization.UpdateOrganizationRequest;
+import ru.bash.jopka.controller.organization.dto.CreateOrganizationRequest;
+import ru.bash.jopka.controller.organization.dto.UpdateOrganizationRequest;
 
 import java.util.Set;
 

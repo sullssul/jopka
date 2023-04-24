@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.business.user.repository.UserRepository;
-import ru.bash.jopka.controller.dto.user.FindUserWithFilterRequest;
+import ru.bash.jopka.controller.user.dto.FindUserWithFilterRequest;
 
 import java.util.Set;
 

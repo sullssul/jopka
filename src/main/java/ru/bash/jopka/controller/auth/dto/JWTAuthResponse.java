@@ -1,4 +1,4 @@
-package ru.bash.jopka.controller.dto.auth;
+package ru.bash.jopka.controller.auth.dto;
 
 import lombok.*;
 

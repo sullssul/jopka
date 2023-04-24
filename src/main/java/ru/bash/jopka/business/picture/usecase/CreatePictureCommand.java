@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.business.picture.repository.PictureRepository;
-import ru.bash.jopka.controller.dto.picture.CreatePictureRequest;
+import ru.bash.jopka.controller.picture.dto.CreatePictureRequest;
 @Slf4j
 @Component
 @RequiredArgsConstructor

@@ -1,8 +1,8 @@
 package ru.bash.jopka.business.status;
 
 import ru.bash.jopka.business.status.model.Status;
-import ru.bash.jopka.controller.dto.status.CreateStatusRequest;
-import ru.bash.jopka.controller.dto.status.UpdateStatusRequest;
+import ru.bash.jopka.controller.status.dto.CreateStatusRequest;
+import ru.bash.jopka.controller.status.dto.UpdateStatusRequest;
 
 import java.util.Set;
 

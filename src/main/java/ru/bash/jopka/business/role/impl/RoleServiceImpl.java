@@ -2,8 +2,8 @@ package ru.bash.jopka.business.role.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.bash.jopka.controller.dto.role.CreateRoleRequest;
-import ru.bash.jopka.controller.dto.role.UpdateRoleRequest;
+import ru.bash.jopka.controller.role.dto.CreateRoleRequest;
+import ru.bash.jopka.controller.role.dto.UpdateRoleRequest;
 import ru.bash.jopka.business.role.RoleService;
 import ru.bash.jopka.business.role.model.Role;
 import ru.bash.jopka.business.role.usecase.*;

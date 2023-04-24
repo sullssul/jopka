@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.status.StatusService;
 import ru.bash.jopka.business.status.model.Status;
 import ru.bash.jopka.business.status.usecase.*;
-import ru.bash.jopka.controller.dto.status.CreateStatusRequest;
-import ru.bash.jopka.controller.dto.status.UpdateStatusRequest;
+import ru.bash.jopka.controller.status.dto.CreateStatusRequest;
+import ru.bash.jopka.controller.status.dto.UpdateStatusRequest;
 
 import java.util.Set;
 

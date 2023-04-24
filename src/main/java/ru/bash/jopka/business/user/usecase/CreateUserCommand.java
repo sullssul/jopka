@@ -3,10 +3,9 @@ package ru.bash.jopka.business.user.usecase;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import ru.bash.jopka.controller.dto.user.RegisterRequest;
+import ru.bash.jopka.controller.user.dto.RegisterRequest;
 import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.business.user.repository.UserRepository;
 

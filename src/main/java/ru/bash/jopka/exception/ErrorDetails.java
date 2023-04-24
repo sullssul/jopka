@@ -1,4 +1,4 @@
-package ru.bash.jopka.controller.dto.error;
+package ru.bash.jopka.exception;
 
 import lombok.Builder;
 import lombok.Data;
