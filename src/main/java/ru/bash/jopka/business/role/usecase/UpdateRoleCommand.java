@@ -11,10 +11,12 @@ import ru.bash.jopka.business.role.repository.RoleRepository;
 public class UpdateRoleCommand {
     private final RoleRepository repository;
     private final GetRoleQuery getRoleQuery;
+    private final VerifyRoleQuery verifyQuery;
 
     public Role execute(UpdateRoleRequest request) {
         Role role = getRoleQuery.execute(request.getId());
         role.setName(request.getName());
+        verifyQuery.execute(role);
         return repository.update(role);
     }
 }

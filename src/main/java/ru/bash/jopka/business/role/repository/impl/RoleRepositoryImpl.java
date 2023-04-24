@@ -8,6 +8,7 @@ import ru.bash.jopka.business.role.repository.jpa.JpaRole;
 import ru.bash.jopka.business.role.repository.jpa.JpaRoleMapper;
 import ru.bash.jopka.business.role.repository.jpa.JpaRoleRepository;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -40,10 +41,9 @@ public class RoleRepositoryImpl implements RoleRepository {
     }
 
     @Override
-    public Role findByName(String name) {
+    public Optional<Role> findByName(String name) {
         return repository.findByName(name)
-                .map(mapper::fromJpa)
-                .orElse(null);
+                .map(mapper::fromJpa);
     }
 
     @Override

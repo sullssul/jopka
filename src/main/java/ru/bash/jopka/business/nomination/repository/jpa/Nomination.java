@@ -1,4 +1,4 @@
-package ru.bash.jopka.database.model;
+package ru.bash.jopka.business.nomination.repository.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

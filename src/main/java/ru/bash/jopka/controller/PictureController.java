@@ -5,12 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import ru.bash.jopka.business.picture.PictureService;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.controller.dto.picture.CreatePictureRequest;
 import ru.bash.jopka.controller.dto.picture.FindPictureWithFilterRequest;
 import ru.bash.jopka.controller.dto.picture.UpdatePictureRequest;
+import ru.bash.jopka.exception.APIException;
 
 import java.util.Set;
 @RequestMapping("/api/picture")
@@ -38,7 +38,7 @@ public class PictureController {
     @GetMapping("/{id}")
     public Picture findById(@PathVariable int id) {
         Picture picture = service.find(id);
-        if (picture == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Работа не найдена!");
+        if (picture == null) throw new APIException(HttpStatus.NOT_FOUND, "Работа не найдена!");
         return picture;
     }
 

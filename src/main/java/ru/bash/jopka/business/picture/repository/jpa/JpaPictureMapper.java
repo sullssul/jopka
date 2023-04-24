@@ -3,8 +3,8 @@ package ru.bash.jopka.business.picture.repository.jpa;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.business.user.repository.jpa.JpaUser;
-import ru.bash.jopka.database.model.Nomination;
-import ru.bash.jopka.database.model.Status;
+import ru.bash.jopka.business.nomination.repository.jpa.Nomination;
+import ru.bash.jopka.business.status.repository.jpa.JpaStatus;
 
 @Component
 public class JpaPictureMapper {
@@ -34,8 +34,8 @@ public class JpaPictureMapper {
         return jpaPicture;
     }
 
-    private Status getJpaStatus(long id){
-        Status status = new Status();
+    private JpaStatus getJpaStatus(long id){
+        JpaStatus status = new JpaStatus();
         status.setId(id);
         return status;
     }

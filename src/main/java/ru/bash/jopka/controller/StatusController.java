@@ -5,41 +5,40 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.bash.jopka.business.role.RoleService;
-import ru.bash.jopka.business.role.model.Role;
-import ru.bash.jopka.controller.dto.role.CreateRoleRequest;
-import ru.bash.jopka.controller.dto.role.UpdateRoleRequest;
+import ru.bash.jopka.business.status.StatusService;
+import ru.bash.jopka.business.status.model.Status;
+import ru.bash.jopka.controller.dto.status.CreateStatusRequest;
+import ru.bash.jopka.controller.dto.status.UpdateStatusRequest;
 import ru.bash.jopka.exception.APIException;
 
 import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/role")
+@RequestMapping("/api/status")
 @CrossOrigin("${rest.cross.origin}")
-public class RoleController {
-
-    private final RoleService service;
+public class StatusController {
+    private final StatusService service;
 
     @PostMapping(value = "/create")
-    public Role create(@RequestBody CreateRoleRequest request) {
+    public Status create(@RequestBody CreateStatusRequest request) {
         return service.create(request);
     }
 
     @PostMapping(value = "/update")
-    public Role update(@RequestBody UpdateRoleRequest request) {
+    public Status update(@RequestBody UpdateStatusRequest request) {
         return service.update(request);
     }
 
     @GetMapping("/{id}")
-    public Role findById(@PathVariable int id) {
-        Role role = service.find(id);
-        if (role == null) throw new APIException(HttpStatus.NOT_FOUND, "Роль не найдена!");
-        return role;
+    public Status findById(@PathVariable int id) {
+        Status status = service.find(id);
+        if (status == null) throw new APIException(HttpStatus.NOT_FOUND, "Статус не найден!");
+        return status;
     }
 
     @GetMapping("/findAll")
-    public Set<Role> findAll() {
+    public Set<Status> findAll() {
         return service.findAll();
     }
 

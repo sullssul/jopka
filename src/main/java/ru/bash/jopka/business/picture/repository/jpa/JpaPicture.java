@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 import ru.bash.jopka.business.user.repository.jpa.JpaUser;
-import ru.bash.jopka.database.model.Nomination;
-import ru.bash.jopka.database.model.Status;
+import ru.bash.jopka.business.nomination.repository.jpa.Nomination;
+import ru.bash.jopka.business.status.repository.jpa.JpaStatus;
 
 import java.util.Objects;
 
@@ -29,7 +29,7 @@ public class JpaPicture {
     private JpaUser jpaUser;
     @ManyToOne
     @JoinColumn(name = "status_id", nullable = false)
-    private Status status;
+    private JpaStatus status;
     @ManyToOne
     @JoinColumn(name = "nomination_id", nullable = false)
     private Nomination nomination;

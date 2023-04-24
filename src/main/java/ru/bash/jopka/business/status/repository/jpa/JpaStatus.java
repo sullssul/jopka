@@ -1,4 +1,4 @@
-package ru.bash.jopka.database.model;
+package ru.bash.jopka.business.status.repository.jpa;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,10 +13,11 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Table(name = "status")
 @RequiredArgsConstructor
-public class Status {
-    @Id
+public class JpaStatus {
     @Column(name = "status_id")
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
@@ -27,7 +28,7 @@ public class Status {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Status status = (Status) o;
+        JpaStatus status = (JpaStatus) o;
         return id != null && Objects.equals(id, status.id);
     }
 

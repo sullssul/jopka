@@ -5,11 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import ru.bash.jopka.business.organization.OrganizationService;
 import ru.bash.jopka.business.organization.model.Organization;
 import ru.bash.jopka.controller.dto.organization.CreateOrganizationRequest;
 import ru.bash.jopka.controller.dto.organization.UpdateOrganizationRequest;
+import ru.bash.jopka.exception.APIException;
 
 import java.util.Set;
 @RestController
@@ -32,7 +32,7 @@ public class OrganizationController {
     @GetMapping("/{id}")
     public Organization getOrganizationById(@PathVariable int id) {
         Organization organization = service.find(id);
-        if (organization == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Организация не найдена!");
+        if (organization == null) throw new APIException(HttpStatus.NOT_FOUND, "Организация не найдена!");
         return organization;
     }
 

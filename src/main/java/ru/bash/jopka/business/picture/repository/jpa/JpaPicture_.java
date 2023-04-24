@@ -3,8 +3,8 @@ package ru.bash.jopka.business.picture.repository.jpa;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import ru.bash.jopka.business.user.repository.jpa.JpaUser;
-import ru.bash.jopka.database.model.Nomination;
-import ru.bash.jopka.database.model.Status;
+import ru.bash.jopka.business.nomination.repository.jpa.Nomination;
+import ru.bash.jopka.business.status.repository.jpa.JpaStatus;
 
 import javax.annotation.processing.Generated;
 
@@ -18,7 +18,7 @@ public abstract class JpaPicture_ {
 	public static volatile SingularAttribute<JpaPicture, String> name;
 	public static volatile SingularAttribute<JpaPicture, Long> id;
 	public static volatile SingularAttribute<JpaPicture, String> url;
-	public static volatile SingularAttribute<JpaPicture, Status> status;
+	public static volatile SingularAttribute<JpaPicture, JpaStatus> status;
 	public static volatile SingularAttribute<JpaPicture, Nomination> nomination;
 
 	public static final String SIZE = "size";

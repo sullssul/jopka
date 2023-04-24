@@ -5,14 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-import ru.bash.jopka.business.picture.model.Picture;
-import ru.bash.jopka.controller.dto.picture.FindPictureWithFilterRequest;
+import ru.bash.jopka.business.user.UserService;
+import ru.bash.jopka.business.user.model.User;
 import ru.bash.jopka.controller.dto.user.FindUserWithFilterRequest;
 import ru.bash.jopka.controller.dto.user.RegisterRequest;
 import ru.bash.jopka.controller.dto.user.UpdateUserRequest;
-import ru.bash.jopka.business.user.UserService;
-import ru.bash.jopka.business.user.model.User;
+import ru.bash.jopka.exception.APIException;
 
 import java.util.Set;
 
@@ -36,7 +34,7 @@ public class UserController {
     @GetMapping("/{id}")
     public User findById(@PathVariable int id) {
         User user = service.find(id);
-        if (user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Пользователь не найден!");
+        if (user == null) throw new APIException(HttpStatus.NOT_FOUND, "Пользователь не найден!");
         return user;
     }
     @PostMapping(value = "/find")

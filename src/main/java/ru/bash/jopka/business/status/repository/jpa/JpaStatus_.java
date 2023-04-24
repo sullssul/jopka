@@ -1,20 +1,19 @@
-package ru.bash.jopka.database.model;
+package ru.bash.jopka.business.status.repository.jpa;
 
 import jakarta.persistence.metamodel.SetAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import ru.bash.jopka.business.picture.repository.jpa.JpaPicture;
-import ru.bash.jopka.database.model.Nomination;
 
 import javax.annotation.processing.Generated;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(Nomination.class)
-public abstract class Nomination_ {
+@StaticMetamodel(JpaStatus.class)
+public abstract class JpaStatus_ {
 
-	public static volatile SingularAttribute<Nomination, String> name;
-	public static volatile SingularAttribute<Nomination, Long> id;
-	public static volatile SetAttribute<Nomination, JpaPicture> pictures;
+	public static volatile SingularAttribute<JpaStatus, String> name;
+	public static volatile SingularAttribute<JpaStatus, Long> id;
+	public static volatile SetAttribute<JpaStatus, JpaPicture> pictures;
 
 	public static final String NAME = "name";
 	public static final String ID = "id";

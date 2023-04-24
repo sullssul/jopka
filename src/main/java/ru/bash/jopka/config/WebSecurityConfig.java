@@ -39,14 +39,12 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        //authorize.anyRequest().authenticated()
                         authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                                //.requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
                                 .requestMatchers("/api/auth/**").permitAll()
                                 .requestMatchers("/api/user/register").permitAll()
+                                .requestMatchers("/error/**").permitAll()
                                 .anyRequest().authenticated()
 
                 ).exceptionHandling( exception -> exception
@@ -57,6 +55,7 @@ public class WebSecurityConfig {
 
 
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.headers().cacheControl();
 
         return http.build();
     }
