@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.bash.jopka.business.picture.PictureService;
 import ru.bash.jopka.business.picture.model.Picture;
@@ -52,6 +53,7 @@ public class PictureController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@Positive @PathVariable long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }

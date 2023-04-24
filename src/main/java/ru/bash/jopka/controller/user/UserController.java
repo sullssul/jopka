@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.bash.jopka.business.user.UserService;
 import ru.bash.jopka.business.user.model.User;
@@ -41,16 +42,19 @@ public class UserController {
     }
 
     @PostMapping(value = "/find")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('JURI')")
     public Set<User> findByFilter(@RequestBody FindUserWithFilterRequest request) {
         return service.findWithFilter(request);
     }
 
     @GetMapping("/findAll")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('JURI')")
     public Set<User> findAll() {
         return service.findAll();
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@Positive @PathVariable int id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }

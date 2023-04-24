@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.bash.jopka.business.organization.OrganizationService;
 import ru.bash.jopka.business.organization.model.Organization;
@@ -22,11 +23,13 @@ public class OrganizationController {
     private final OrganizationService service;
 
     @PostMapping(value = "/create")
+    @PreAuthorize("hasRole('ADMIN')")
     public Organization create(@RequestBody @Valid CreateOrganizationRequest request) {
         return service.create(request);
     }
 
     @PostMapping(value = "/update")
+    @PreAuthorize("hasRole('ADMIN')")
     public Organization update(@RequestBody @Valid UpdateOrganizationRequest request) {
         return service.update(request);
     }
@@ -45,6 +48,7 @@ public class OrganizationController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@Positive @PathVariable long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }

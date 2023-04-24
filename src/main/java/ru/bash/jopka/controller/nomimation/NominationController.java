@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.bash.jopka.business.nomination.NominationService;
 import ru.bash.jopka.business.nomination.model.Nomination;
@@ -22,11 +23,13 @@ public class NominationController {
     private final NominationService service;
 
     @PostMapping(value = "/create")
+    @PreAuthorize("hasRole('ADMIN')")
     public Nomination create(@RequestBody @Valid CreateNominationRequest request) {
         return service.create(request);
     }
 
     @PostMapping(value = "/update")
+    @PreAuthorize("hasRole('ADMIN')")
     public Nomination update(@RequestBody @Valid UpdateNominationRequest request) {
         return service.update(request);
     }
@@ -45,6 +48,7 @@ public class NominationController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@PathVariable @Positive long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
