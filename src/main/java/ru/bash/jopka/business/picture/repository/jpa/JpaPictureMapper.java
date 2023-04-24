@@ -3,7 +3,7 @@ package ru.bash.jopka.business.picture.repository.jpa;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.business.user.repository.jpa.JpaUser;
-import ru.bash.jopka.business.nomination.repository.jpa.Nomination;
+import ru.bash.jopka.business.nomination.repository.jpa.JpaNomination;
 import ru.bash.jopka.business.status.repository.jpa.JpaStatus;
 
 @Component
@@ -46,8 +46,8 @@ public class JpaPictureMapper {
         return user;
     }
 
-    private Nomination getJpaNomination(long id){
-        Nomination nomination = new Nomination();
+    private JpaNomination getJpaNomination(long id){
+        JpaNomination nomination = new JpaNomination();
         nomination.setId(id);
         return nomination;
     }

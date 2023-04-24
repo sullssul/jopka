@@ -8,12 +8,12 @@ import ru.bash.jopka.business.picture.repository.jpa.JpaPicture;
 import javax.annotation.processing.Generated;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(Nomination.class)
+@StaticMetamodel(JpaNomination.class)
 public abstract class Nomination_ {
 
-	public static volatile SingularAttribute<Nomination, String> name;
-	public static volatile SingularAttribute<Nomination, Long> id;
-	public static volatile SetAttribute<Nomination, JpaPicture> pictures;
+	public static volatile SingularAttribute<JpaNomination, String> name;
+	public static volatile SingularAttribute<JpaNomination, Long> id;
+	public static volatile SetAttribute<JpaNomination, JpaPicture> pictures;
 
 	public static final String NAME = "name";
 	public static final String ID = "id";

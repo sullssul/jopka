@@ -8,6 +8,7 @@ import ru.bash.jopka.business.status.usecase.*;
 import ru.bash.jopka.controller.status.dto.CreateStatusRequest;
 import ru.bash.jopka.controller.status.dto.UpdateStatusRequest;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -30,7 +31,7 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public Status find(long id) {
+    public Optional<Status> find(long id) {
         return findQuery.execute(id);
     }
 

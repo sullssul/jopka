@@ -8,6 +8,7 @@ import ru.bash.jopka.business.organization.usecase.*;
 import ru.bash.jopka.controller.organization.dto.CreateOrganizationRequest;
 import ru.bash.jopka.controller.organization.dto.UpdateOrganizationRequest;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -29,7 +30,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public Organization find(long id) {
+    public Optional<Organization> find(long id) {
         return findQuery.execute(id);
     }
 

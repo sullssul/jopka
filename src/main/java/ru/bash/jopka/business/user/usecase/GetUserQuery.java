@@ -10,11 +10,12 @@ import ru.bash.jopka.exception.APIException;
 @Component
 @RequiredArgsConstructor
 public class GetUserQuery {
-    private final UserRepository userRepository;
+    private final UserRepository repository;
 
     public User execute(long id) {
-        User user = userRepository.find(id);
-        if (user == null) throw new APIException(HttpStatus.NOT_FOUND, "Пользователь не найден!");
-        return user;
+        return repository.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Пользователь c id: " + id + " - не найден!")
+                );
     }
 }

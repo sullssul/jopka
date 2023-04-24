@@ -11,9 +11,11 @@ import ru.bash.jopka.exception.APIException;
 @RequiredArgsConstructor
 public class GetPictureQuery {
     private final PictureRepository repository;
+
     public Picture execute(long id) {
-        Picture picture = repository.find(id);
-        if (picture == null) throw new APIException(HttpStatus.NOT_FOUND, "Работа не найдена!");
-        return picture;
+        return repository.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Работа c id: " + id + " - не найдена!")
+                );
     }
 }

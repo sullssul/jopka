@@ -24,7 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findUserByEmail.execute(username)
                 .orElseThrow(() ->
-                        new UsernameNotFoundException("User with email not found: " + username));
+                        new UsernameNotFoundException("User with email not found: " + username)
+                );
 
         Role role = getRoleQuery.execute(user.getRoleId());
 

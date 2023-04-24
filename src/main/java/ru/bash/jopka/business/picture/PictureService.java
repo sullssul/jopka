@@ -5,6 +5,7 @@ import ru.bash.jopka.controller.picture.dto.CreatePictureRequest;
 import ru.bash.jopka.controller.picture.dto.FindPictureWithFilterRequest;
 import ru.bash.jopka.controller.picture.dto.UpdatePictureRequest;
 
+import java.util.Optional;
 import java.util.Set;
 
 public interface PictureService {
@@ -15,7 +16,7 @@ public interface PictureService {
 
     Picture create(CreatePictureRequest request);
 
-    Picture find(int id);
+    Optional<Picture> find(int id);
 
     Set<Picture> findAll();
 

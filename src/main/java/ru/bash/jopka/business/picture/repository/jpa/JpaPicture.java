@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 import ru.bash.jopka.business.user.repository.jpa.JpaUser;
-import ru.bash.jopka.business.nomination.repository.jpa.Nomination;
+import ru.bash.jopka.business.nomination.repository.jpa.JpaNomination;
 import ru.bash.jopka.business.status.repository.jpa.JpaStatus;
 
 import java.util.Objects;
@@ -32,7 +32,7 @@ public class JpaPicture {
     private JpaStatus status;
     @ManyToOne
     @JoinColumn(name = "nomination_id", nullable = false)
-    private Nomination nomination;
+    private JpaNomination nomination;
 
     @Override
     public boolean equals(Object o) {

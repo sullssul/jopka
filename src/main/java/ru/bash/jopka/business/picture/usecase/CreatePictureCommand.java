@@ -7,17 +7,16 @@ import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.business.picture.repository.PictureRepository;
 import ru.bash.jopka.controller.picture.dto.CreatePictureRequest;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class CreatePictureCommand {
     private final PictureRepository repository;
-    private final VerifyPictureQuery verifyQuery;
 
     @Transactional
     public Picture execute(CreatePictureRequest request) {
         Picture picture = buildRole(request);
-        verifyQuery.execute(picture);
 
         picture = repository.update(picture);
         log.info("Picture created: " + picture);

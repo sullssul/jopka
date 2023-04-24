@@ -14,6 +14,7 @@ import ru.bash.jopka.controller.picture.dto.UpdatePictureRequest;
 import ru.bash.jopka.exception.APIException;
 
 import java.util.Set;
+
 @RequestMapping("/api/picture")
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +22,7 @@ import java.util.Set;
 public class PictureController {
 
     private final PictureService service;
+
     @PostMapping(value = "/create")
     public Picture create(@RequestBody @Valid CreatePictureRequest request) {
         return service.create(request);
@@ -38,9 +40,10 @@ public class PictureController {
 
     @GetMapping("/{id}")
     public Picture findById(@PathVariable @Positive int id) {
-        Picture picture = service.find(id);
-        if (picture == null) throw new APIException(HttpStatus.NOT_FOUND, "Работа не найдена!");
-        return picture;
+        return service.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Работа c id: " + id + " - не найдена!")
+                );
     }
 
     @GetMapping("/findAll")

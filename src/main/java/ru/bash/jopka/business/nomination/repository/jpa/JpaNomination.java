@@ -1,9 +1,6 @@
 package ru.bash.jopka.business.nomination.repository.jpa;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 import ru.bash.jopka.business.picture.repository.jpa.JpaPicture;
@@ -15,20 +12,23 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
+@Table(name = "nomination")
 @RequiredArgsConstructor
-public class Nomination {
+public class JpaNomination {
     @Id
     @Column(name = "nomination_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     @OneToMany(mappedBy = "nomination")
+    @ToString.Exclude
     private Set<JpaPicture> pictures;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Nomination that = (Nomination) o;
+        JpaNomination that = (JpaNomination) o;
         return id != null && Objects.equals(id, that.id);
     }
 

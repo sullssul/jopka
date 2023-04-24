@@ -8,10 +8,9 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface UserRepository {
-    User find(long id);
+    Optional<User> find(long id);
     User update(User user);
     Optional<User> findByEmail(String email);
-    List<User> findAllByEmailLike(String email);
     Set<User> findAll();
     void delete(long id);
     Set<User> findByCriteriaQuery(LocalDate birthday,

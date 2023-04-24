@@ -11,11 +11,13 @@ import ru.bash.jopka.controller.organization.dto.UpdateOrganizationRequest;
 public class UpdateOrganizationCommand {
     private final OrganizationRepository repository;
     private final GetOrganizationQuery getQuery;
+    private final VerifyOrganizationQuery verifyQuery;
 
     public Organization execute(UpdateOrganizationRequest request) {
         Organization organization = getQuery.execute(request.getId());
         organization.setName(request.getName());
         organization.setDescription(request.getDescription());
+        verifyQuery.execute(organization);
         return repository.update(organization);
     }
 }

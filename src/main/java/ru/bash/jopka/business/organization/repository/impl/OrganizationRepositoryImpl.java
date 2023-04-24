@@ -8,6 +8,7 @@ import ru.bash.jopka.business.organization.repository.jpa.JpaOrganization;
 import ru.bash.jopka.business.organization.repository.jpa.JpaOrganizationMapper;
 import ru.bash.jopka.business.organization.repository.jpa.JpaOrganizationRepository;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,10 +19,9 @@ public class OrganizationRepositoryImpl implements OrganizationRepository {
     private final JpaOrganizationMapper mapper;
 
     @Override
-    public Organization find(long id) {
+    public Optional<Organization> find(long id) {
         return repository.findById(id)
-                .map(mapper::fromJpa)
-                .orElse(null);
+                .map(mapper::fromJpa);
     }
 
     @Override
@@ -39,10 +39,9 @@ public class OrganizationRepositoryImpl implements OrganizationRepository {
     }
 
     @Override
-    public Organization findByName(String name) {
+    public Optional<Organization> findByName(String name) {
         return repository.findByName(name)
-                .map(mapper::fromJpa)
-                .orElse(null);
+                .map(mapper::fromJpa);
     }
 
     @Override

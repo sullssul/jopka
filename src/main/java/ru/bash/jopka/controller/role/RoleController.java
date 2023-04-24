@@ -12,6 +12,7 @@ import ru.bash.jopka.controller.role.dto.CreateRoleRequest;
 import ru.bash.jopka.controller.role.dto.UpdateRoleRequest;
 import ru.bash.jopka.exception.APIException;
 
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -34,9 +35,10 @@ public class RoleController {
 
     @GetMapping("/{id}")
     public Role findById(@PathVariable int id) {
-        Role role = service.find(id);
-        if (role == null) throw new APIException(HttpStatus.NOT_FOUND, "Роль не найдена!");
-        return role;
+        return service.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Роль c id: " + id + " - не найдена!")
+                );
     }
 
     @GetMapping("/findAll")

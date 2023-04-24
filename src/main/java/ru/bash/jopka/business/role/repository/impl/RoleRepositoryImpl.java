@@ -20,10 +20,9 @@ public class RoleRepositoryImpl implements RoleRepository {
     private final JpaRoleMapper mapper;
 
     @Override
-    public Role find(long id) {
+    public Optional<Role> find(long id) {
         return repository.findById(id)
-                .map(mapper::fromJpa)
-                .orElse(null);
+                .map(mapper::fromJpa);
     }
 
     @Override

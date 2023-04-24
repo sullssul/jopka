@@ -8,6 +8,7 @@ import ru.bash.jopka.business.role.RoleService;
 import ru.bash.jopka.business.role.model.Role;
 import ru.bash.jopka.business.role.usecase.*;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -29,7 +30,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role find(long id) {
+    public Optional<Role> find(long id) {
         return findQuery.execute(id);
     }
 

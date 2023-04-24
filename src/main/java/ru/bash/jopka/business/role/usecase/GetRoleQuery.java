@@ -13,8 +13,9 @@ public class GetRoleQuery {
     private final RoleRepository repository;
 
     public Role execute(long id) {
-        Role role = repository.find(id);
-        if (role == null) throw new APIException(HttpStatus.NOT_FOUND, "Роль не найдена!");
-        return role;
+        return repository.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Роль c id: " + id + " - не найдена!")
+                );
     }
 }

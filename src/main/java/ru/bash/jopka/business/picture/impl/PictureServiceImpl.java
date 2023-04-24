@@ -9,6 +9,7 @@ import ru.bash.jopka.controller.picture.dto.CreatePictureRequest;
 import ru.bash.jopka.controller.picture.dto.FindPictureWithFilterRequest;
 import ru.bash.jopka.controller.picture.dto.UpdatePictureRequest;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -37,7 +38,7 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
-    public Picture find(int id) {
+    public Optional<Picture> find(int id) {
         return findQuery.execute(id);
     }
 

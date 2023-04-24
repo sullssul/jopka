@@ -29,10 +29,9 @@ public class UserRepositoryImpl implements UserRepository {
     private final JpaUserMapper mapper;
 
     @Override
-    public User find(long id) {
+    public Optional<User> find(long id) {
         return repository.findById(id)
-                .map(mapper::fromJpa)
-                .orElse(null);
+                .map(mapper::fromJpa);
     }
 
     @Override
@@ -50,6 +49,14 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void delete(long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Set<User> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::fromJpa)
+                .collect(Collectors.toSet());
     }
 
     @Override
@@ -110,22 +117,6 @@ public class UserRepositoryImpl implements UserRepository {
 
         return entityManager.createQuery(criteriaQuery)
                 .getResultStream()
-                .map(mapper::fromJpa)
-                .collect(Collectors.toSet());
-    }
-
-    @Override
-    public List<User> findAllByEmailLike(String email) {
-        return repository.findAllByEmailLike(email)
-                .stream()
-                .map(mapper::fromJpa)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public Set<User> findAll() {
-        return repository.findAll()
-                .stream()
                 .map(mapper::fromJpa)
                 .collect(Collectors.toSet());
     }

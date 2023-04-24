@@ -33,9 +33,10 @@ public class StatusController {
 
     @GetMapping("/{id}")
     public Status findById(@PathVariable int id) {
-        Status status = service.find(id);
-        if (status == null) throw new APIException(HttpStatus.NOT_FOUND, "Статус не найден!");
-        return status;
+        return service.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Статус c id: " + id + " - не найден!")
+                );
     }
 
     @GetMapping("/findAll")

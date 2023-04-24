@@ -18,11 +18,11 @@ public class StatusRepositoryImpl implements StatusRepository {
 
     private final JpaStatusRepository repository;
     private final JpaStatusMapper mapper;
+
     @Override
-    public Status find(long id) {
+    public Optional<Status> find(long id) {
         return repository.findById(id)
-                .map(mapper::fromJpa)
-                .orElse(null);
+                .map(mapper::fromJpa);
     }
 
     @Override

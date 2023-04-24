@@ -34,9 +34,10 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User findById(@PathVariable int id) {
-        User user = service.find(id);
-        if (user == null) throw new APIException(HttpStatus.NOT_FOUND, "Пользователь не найден!");
-        return user;
+        return service.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Пользователь c id: " + id + " - не найден!")
+                );
     }
 
     @PostMapping(value = "/find")

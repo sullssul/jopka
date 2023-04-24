@@ -9,6 +9,7 @@ import ru.bash.jopka.controller.user.dto.UpdateUserRequest;
 import ru.bash.jopka.business.user.UserService;
 import ru.bash.jopka.business.user.model.User;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User find(int id) {
+    public Optional<User> find(int id) {
         return findUserQuery.execute(id);
     }
 

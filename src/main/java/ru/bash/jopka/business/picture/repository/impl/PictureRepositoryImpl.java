@@ -15,9 +15,10 @@ import ru.bash.jopka.business.picture.repository.jpa.JpaPictureMapper;
 import ru.bash.jopka.business.picture.repository.jpa.JpaPictureRepository;
 import ru.bash.jopka.business.picture.repository.jpa.JpaPicture_;
 import ru.bash.jopka.business.user.repository.jpa.JpaUser;
-import ru.bash.jopka.business.nomination.repository.jpa.Nomination;
+import ru.bash.jopka.business.nomination.repository.jpa.JpaNomination;
 import ru.bash.jopka.business.status.repository.jpa.JpaStatus;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,10 +31,9 @@ public class PictureRepositoryImpl implements PictureRepository {
     private final JpaPictureMapper mapper;
 
     @Override
-    public Picture find(long id) {
+    public Optional<Picture> find(long id) {
         return repository.findById(id)
-                .map(mapper::fromJpa)
-                .orElse(null);
+                .map(mapper::fromJpa);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class PictureRepositoryImpl implements PictureRepository {
         }
 
         if (nominationId != 0) {
-            Nomination nomination = new Nomination();
+            JpaNomination nomination = new JpaNomination();
             nomination.setId(statusId);
             Predicate p = criteriaBuilder.equal(contactEntityRoot.get(JpaPicture_.nomination), nomination);
             criteria = criteriaBuilder.and(criteria, p);

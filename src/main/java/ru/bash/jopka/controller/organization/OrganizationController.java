@@ -13,6 +13,7 @@ import ru.bash.jopka.controller.organization.dto.UpdateOrganizationRequest;
 import ru.bash.jopka.exception.APIException;
 
 import java.util.Set;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/organization")
@@ -32,9 +33,10 @@ public class OrganizationController {
 
     @GetMapping("/{id}")
     public Organization getOrganizationById(@PathVariable @Positive int id) {
-        Organization organization = service.find(id);
-        if (organization == null) throw new APIException(HttpStatus.NOT_FOUND, "Организация не найдена!");
-        return organization;
+        return service.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Организация c id: " + id + " - не найдена!")
+                );
     }
 
     @GetMapping("/findAll")

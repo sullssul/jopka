@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface StatusRepository {
-    Status find(long id);
+    Optional<Status> find(long id);
     Status update(Status status);
     Optional<Status> findByName(String name);
     Set<Status> findAll();

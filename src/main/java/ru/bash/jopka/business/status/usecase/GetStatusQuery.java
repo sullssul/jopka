@@ -11,9 +11,11 @@ import ru.bash.jopka.exception.APIException;
 @RequiredArgsConstructor
 public class GetStatusQuery {
     private final StatusRepository repository;
+
     public Status execute(long id) {
-        Status status = repository.find(id);
-        if (status == null) throw new APIException(HttpStatus.NOT_FOUND, "Статус не найдена!");
-        return status;
+        return repository.find(id)
+                .orElseThrow(() ->
+                        new APIException(HttpStatus.NOT_FOUND, "Статус c id: " + id + " - не найден!")
+                );
     }
 }
