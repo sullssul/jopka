@@ -16,14 +16,14 @@ public class CreatePictureCommand {
 
     @Transactional
     public Picture execute(CreatePictureRequest request) {
-        Picture picture = buildRole(request);
+        Picture picture = buildPicture(request);
 
         picture = repository.update(picture);
         log.info("Picture created: " + picture);
         return picture;
     }
 
-    private Picture buildRole(CreatePictureRequest request) {
+    private Picture buildPicture(CreatePictureRequest request) {
         return Picture.builder()
                 .id(0L)
                 .url(request.getUrl())
