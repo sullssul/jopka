@@ -11,7 +11,7 @@ public class UpdatePictureRequest {
     @NotEmpty
     private String name;
     private String size;
-    private String url;
+    private String base64;
     private int ratingValue;
     @Positive
     private long userId;

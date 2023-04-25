@@ -26,7 +26,7 @@ public class CreatePictureCommand {
     private Picture buildPicture(CreatePictureRequest request) {
         return Picture.builder()
                 .id(0L)
-                .url(request.getUrl())
+                .base64(request.getBase64())
                 .size(request.getSize())
                 .ratingValue(request.getRatingValue())
                 .userId(request.getUserId())

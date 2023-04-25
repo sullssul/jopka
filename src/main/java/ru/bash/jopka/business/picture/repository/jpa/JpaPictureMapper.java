@@ -12,7 +12,7 @@ public class JpaPictureMapper {
         return Picture.builder()
                 .id(jpaPicture.getId())
                 .name(jpaPicture.getName())
-                .url(jpaPicture.getUrl())
+                .base64(jpaPicture.getUrl())
                 .nominationId(jpaPicture.getNomination().getId())
                 .ratingValue(jpaPicture.getRatingValue())
                 .size(jpaPicture.getSize())
@@ -29,7 +29,7 @@ public class JpaPictureMapper {
         jpaPicture.setName(picture.getName());
         jpaPicture.setId(picture.getId());
         jpaPicture.setSize(picture.getSize());
-        jpaPicture.setUrl(picture.getUrl());
+        jpaPicture.setUrl(picture.getBase64());
         jpaPicture.setRatingValue(picture.getRatingValue());
         return jpaPicture;
     }

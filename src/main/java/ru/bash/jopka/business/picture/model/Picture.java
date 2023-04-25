@@ -9,7 +9,7 @@ public class Picture {
     private Long id;
     private String name;
     private String size;
-    private String url;
+    private String base64;
     private int ratingValue;
     private long userId;
     private long statusId;

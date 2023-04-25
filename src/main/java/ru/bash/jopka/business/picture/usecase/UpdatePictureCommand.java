@@ -17,7 +17,7 @@ public class UpdatePictureCommand {
 
         picture.setName(request.getName());
         picture.setSize(request.getSize());
-        picture.setUrl(request.getUrl());
+        picture.setBase64(request.getBase64());
         picture.setRatingValue(request.getRatingValue());
         picture.setUserId(request.getUserId());
         picture.setNominationId(request.getNominationId());
