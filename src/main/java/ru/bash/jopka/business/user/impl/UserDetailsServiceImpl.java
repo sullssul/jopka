@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.role.model.Role;
 import ru.bash.jopka.business.role.usecase.GetRoleQuery;
 import ru.bash.jopka.business.user.model.User;
-import ru.bash.jopka.business.user.usecase.FindUserByEmail;
+import ru.bash.jopka.business.user.usecase.FindUserByEmailQuery;
 
 import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private final FindUserByEmail findUserByEmail;
+    private final FindUserByEmailQuery findUserByEmail;
     private final GetRoleQuery getRoleQuery;
 
     @Override

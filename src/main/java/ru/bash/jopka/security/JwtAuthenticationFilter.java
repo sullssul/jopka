@@ -13,17 +13,17 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
+import ru.bash.jopka.security.jwt.JwtTokenService;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
-    private final JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenService tokenService;
 
     private final UserDetailsService userDetailsService;
-
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -31,13 +31,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
 
         // get JWT token from http request
-        String token = getTokenFromRequest(request);
+        Optional<String> token = parseJwt(request);
 
         // validate token
-        if(StringUtils.hasText(token) && jwtTokenProvider.validateToken(token)){
+        if (token.isPresent() && tokenService.validateJwtToken(token.get())) {
 
             // get username from token
-            String username = jwtTokenProvider.getUsername(token);
+            String username = tokenService.getUserNameFromToken(token.get());
 
             // load the user associated with token
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -55,15 +55,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private String getTokenFromRequest(HttpServletRequest request){
+    private Optional<String> parseJwt(HttpServletRequest request) {
+        String headerAuth = request.getHeader("Authorization");
 
-        String bearerToken = request.getHeader("Authorization");
-
-        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")){
-            return bearerToken.substring(7, bearerToken.length());
+        if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
+            return Optional.of(headerAuth.substring(7));
         }
 
-        return null;
+        return Optional.empty();
     }
 
 }

@@ -15,16 +15,16 @@ import java.util.ArrayList;
 @Component
 @RequiredArgsConstructor
 public class CreateUserCommand {
-    private final UserRepository userRepository;
-    private final VerifyUserQuery verifyUserQuery;
+    private final UserRepository repository;
+    private final VerifyUserQuery verifyQuery;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public User execute(RegisterRequest request) {
         User user = buildUser(request);
-        verifyUserQuery.execute(user);
+        verifyQuery.execute(user);
 
-        user = userRepository.update(user);
+        user = repository.update(user);
         log.debug("User created: " + user);
         return user;
     }

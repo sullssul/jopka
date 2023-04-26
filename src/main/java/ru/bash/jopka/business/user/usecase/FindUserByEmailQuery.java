@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class FindUserByEmail {
+public class FindUserByEmailQuery {
     private final UserRepository repository;
 
     public Optional<User> execute(String email){
