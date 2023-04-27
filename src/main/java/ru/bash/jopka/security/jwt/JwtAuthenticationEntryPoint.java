@@ -1,4 +1,4 @@
-package ru.bash.jopka.security;
+package ru.bash.jopka.security.jwt;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -1,4 +1,4 @@
-package ru.bash.jopka.security;
+package ru.bash.jopka.security.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -13,7 +13,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import ru.bash.jopka.security.jwt.JwtTokenService;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -21,9 +20,8 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private final JwtTokenService tokenService;
-
     private final UserDetailsService userDetailsService;
+    private final JwtTokenService tokenService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

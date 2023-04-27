@@ -14,8 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import ru.bash.jopka.security.JwtAuthenticationEntryPoint;
-import ru.bash.jopka.security.JwtAuthenticationFilter;
+import ru.bash.jopka.security.jwt.JwtAuthenticationEntryPoint;
+import ru.bash.jopka.security.jwt.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
