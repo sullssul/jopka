@@ -51,6 +51,6 @@ public class AuthServiceImpl implements AuthService {
                 .getUsername();
 
         jwtTokenService.deleteTokenByEmail(email);
-        return "Успешно выполенено!";
+        return "Успешно выполнено!";
     }
 }

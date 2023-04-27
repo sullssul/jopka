@@ -15,7 +15,6 @@ import ru.bash.jopka.business.user.repository.jpa.JpaUserRepository;
 import ru.bash.jopka.business.user.repository.jpa.JpaUser_;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;

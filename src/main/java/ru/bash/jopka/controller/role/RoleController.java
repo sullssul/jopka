@@ -13,7 +13,6 @@ import ru.bash.jopka.controller.role.dto.CreateRoleRequest;
 import ru.bash.jopka.controller.role.dto.UpdateRoleRequest;
 import ru.bash.jopka.exception.APIException;
 
-import java.util.Optional;
 import java.util.Set;
 
 @RestController

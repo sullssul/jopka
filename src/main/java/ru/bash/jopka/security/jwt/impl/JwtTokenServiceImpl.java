@@ -97,7 +97,7 @@ public class JwtTokenServiceImpl implements JwtTokenService {
     private void verifyExpiration(JwtToken token) {
         if (token.getExpiryDate().compareTo(Instant.now()) < 0) {
             deleteTokenCommand.execute(token.getId());
-            throw new APIException(HttpStatus.FORBIDDEN, "Refresh token was expired. Please make a new signin request");
+            throw new APIException(HttpStatus.FORBIDDEN, "Refresh token was expired. Please make a new signing request");
         }
     }
 

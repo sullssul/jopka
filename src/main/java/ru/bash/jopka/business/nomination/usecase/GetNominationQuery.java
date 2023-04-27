@@ -7,8 +7,6 @@ import ru.bash.jopka.business.nomination.model.Nomination;
 import ru.bash.jopka.business.nomination.repository.NominationRepository;
 import ru.bash.jopka.exception.APIException;
 
-import java.util.Optional;
-
 @Component
 @RequiredArgsConstructor
 public class GetNominationQuery {

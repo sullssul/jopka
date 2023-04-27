@@ -3,7 +3,6 @@ package ru.bash.jopka.business.user.repository;
 import ru.bash.jopka.business.user.model.User;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 

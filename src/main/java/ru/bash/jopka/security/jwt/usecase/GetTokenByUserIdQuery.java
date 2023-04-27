@@ -10,6 +10,7 @@ import ru.bash.jopka.security.jwt.model.JwtToken;
 @RequiredArgsConstructor
 public class GetTokenByUserIdQuery {
     private final FindTokenByUserIdQuery findByUserIdQuery;
+
     public JwtToken execute(long userId) {
         return findByUserIdQuery.execute(userId)
                 .orElseThrow(() ->

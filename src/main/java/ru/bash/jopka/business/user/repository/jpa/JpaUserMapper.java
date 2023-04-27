@@ -1,11 +1,13 @@
 package ru.bash.jopka.business.user.repository.jpa;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import ru.bash.jopka.business.organization.repository.jpa.JpaOrganization;
 import ru.bash.jopka.business.picture.repository.jpa.JpaPicture;
 import ru.bash.jopka.business.role.repository.jpa.JpaRole;
 import ru.bash.jopka.business.user.model.User;
+import ru.bash.jopka.exception.APIException;
 
 import java.util.List;
 import java.util.Set;
@@ -49,7 +51,7 @@ public class JpaUserMapper {
                 .secondName(jpaUser.getSecondName())
                 .fatherName(jpaUser.getFatherName())
                 .picturesId(jpaUser.getPictures().stream().map(JpaPicture::getId).collect(Collectors.toList()))
-                .roleId(jpaUser.getRoles().stream().findFirst().orElseThrow(RuntimeException::new).getId())//todo exception
+                .roleId(jpaUser.getRoles().stream().findFirst().orElseThrow(() -> new APIException(HttpStatus.BAD_REQUEST, "Не удалось найти роль")).getId())
                 .organizationId(jpaUser.getOrganization().getId())
                 .build();
     }
@@ -65,6 +67,7 @@ public class JpaUserMapper {
         organization.setId(organizationId);
         return organization;
     }
+
     private Set<JpaPicture> getPictures(List<Long> picturesIds) {
         return picturesIds
                 .stream()
@@ -72,7 +75,7 @@ public class JpaUserMapper {
                 .collect(Collectors.toSet());
     }
 
-    private JpaPicture getJpaPicture(long id){
+    private JpaPicture getJpaPicture(long id) {
         JpaPicture jpaPicture = new JpaPicture();
         jpaPicture.setId(id);
         return jpaPicture;
