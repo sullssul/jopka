@@ -17,7 +17,7 @@ import ru.bash.jopka.security.jwt.model.JwtToken;
 public class AuthController {
     private final AuthService authService;
 
-    @PostMapping("/signing")
+    @PostMapping("/signin")
     public JwtToken authenticateUser(@RequestBody @Valid LoginRequest request) {
         return authService.authAndCreateToken(request);
     }
