@@ -7,6 +7,7 @@ import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.business.picture.usecase.*;
 import ru.bash.jopka.controller.picture.dto.CreatePictureRequest;
 import ru.bash.jopka.controller.picture.dto.FindPictureWithFilterRequest;
+import ru.bash.jopka.controller.picture.dto.UpdatePictureRating;
 import ru.bash.jopka.controller.picture.dto.UpdatePictureRequest;
 
 import java.util.Optional;
@@ -18,9 +19,15 @@ public class PictureServiceImpl implements PictureService {
     private final CreatePictureCommand createCommand;
     private final DeletePictureCommand deleteCommand;
     private final UpdatePictureCommand updateCommand;
+    private final UpdatePictureRatingCommand updatePictureRatingCommand;
     private final FindPictureQuery findQuery;
     private final FindAllPicturesQuery findAllQuery;
     private final FindPictureWithFilterQuery findWithFilterQuery;
+
+    @Override
+    public Picture updateRatingValue(UpdatePictureRating request) {
+        return updatePictureRatingCommand.execute(request);
+    }
 
     @Override
     public Picture update(UpdatePictureRequest request) {

@@ -11,6 +11,7 @@ import ru.bash.jopka.business.picture.PictureService;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.controller.picture.dto.CreatePictureRequest;
 import ru.bash.jopka.controller.picture.dto.FindPictureWithFilterRequest;
+import ru.bash.jopka.controller.picture.dto.UpdatePictureRating;
 import ru.bash.jopka.controller.picture.dto.UpdatePictureRequest;
 import ru.bash.jopka.exception.APIException;
 
@@ -32,6 +33,11 @@ public class PictureController {
     @PostMapping(value = "/update")
     public Picture update(@RequestBody @Valid UpdatePictureRequest request) {
         return service.update(request);
+    }
+
+    @PostMapping(value = "/rating/update/")
+    public Picture updateRatingValue(@RequestBody @Valid UpdatePictureRating request) {
+        return service.updateRatingValue(request);
     }
 
     @PostMapping(value = "/find")

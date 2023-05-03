@@ -3,12 +3,15 @@ package ru.bash.jopka.business.picture;
 import ru.bash.jopka.business.picture.model.Picture;
 import ru.bash.jopka.controller.picture.dto.CreatePictureRequest;
 import ru.bash.jopka.controller.picture.dto.FindPictureWithFilterRequest;
+import ru.bash.jopka.controller.picture.dto.UpdatePictureRating;
 import ru.bash.jopka.controller.picture.dto.UpdatePictureRequest;
 
 import java.util.Optional;
 import java.util.Set;
 
 public interface PictureService {
+
+    Picture updateRatingValue(UpdatePictureRating request);
 
     Picture update(UpdatePictureRequest request);
 
