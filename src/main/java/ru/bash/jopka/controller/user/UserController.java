@@ -19,7 +19,6 @@ import java.util.Set;
 @RequestMapping("/api/user")
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("${rest.cross.origin}")
 public class UserController {
     private final UserService service;
 

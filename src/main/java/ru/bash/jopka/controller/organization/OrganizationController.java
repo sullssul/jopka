@@ -18,7 +18,6 @@ import java.util.Set;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/organization")
-@CrossOrigin("${rest.cross.origin}")
 public class OrganizationController {
     private final OrganizationService service;
 

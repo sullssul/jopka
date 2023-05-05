@@ -20,7 +20,6 @@ import java.util.Set;
 @RequestMapping("/api/picture")
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class PictureController {
 
     private final PictureService service;

@@ -15,12 +15,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import ru.bash.jopka.security.jwt.JwtAuthenticationEntryPoint;
 import ru.bash.jopka.security.jwt.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig implements WebMvcConfigurer {

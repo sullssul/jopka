@@ -18,7 +18,6 @@ import java.util.Set;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/nomination")
-@CrossOrigin("${rest.cross.origin}")
 public class NominationController {
     private final NominationService service;
 

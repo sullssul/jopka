@@ -18,7 +18,6 @@ import java.util.Set;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/role")
-@CrossOrigin("${rest.cross.origin}")
 public class RoleController {
 
     private final RoleService service;
