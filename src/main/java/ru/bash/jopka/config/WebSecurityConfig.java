@@ -22,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import ru.bash.jopka.security.jwt.JwtAuthenticationEntryPoint;
 import ru.bash.jopka.security.jwt.JwtAuthenticationFilter;
 
+import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -82,6 +83,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
         configuration.setAllowedOrigins(List.of("*"));
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
