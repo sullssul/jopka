@@ -89,6 +89,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setExposedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
+        configuration.addAllowedOriginPattern("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
