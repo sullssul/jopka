@@ -49,6 +49,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 
         http
                 .csrf().disable()
+                .cors().and()
                 .authorizeHttpRequests((authorize) ->
                         authorize
                                 .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
