@@ -17,7 +17,7 @@ public abstract class JpaPicture_ {
 	public static volatile SingularAttribute<JpaPicture, Integer> ratingValue;
 	public static volatile SingularAttribute<JpaPicture, String> name;
 	public static volatile SingularAttribute<JpaPicture, Long> id;
-	public static volatile SingularAttribute<JpaPicture, String> url;
+	public static volatile SingularAttribute<JpaPicture, String> base64;
 	public static volatile SingularAttribute<JpaPicture, JpaStatus> status;
 	public static volatile SingularAttribute<JpaPicture, JpaNomination> nomination;
 
@@ -26,7 +26,7 @@ public abstract class JpaPicture_ {
 	public static final String RATING_VALUE = "ratingValue";
 	public static final String NAME = "name";
 	public static final String ID = "id";
-	public static final String URL = "url";
+	public static final String BASE64 = "base64";
 	public static final String STATUS = "status";
 	public static final String NOMINATION = "nomination";
 

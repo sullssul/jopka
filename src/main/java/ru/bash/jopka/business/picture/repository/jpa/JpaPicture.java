@@ -22,7 +22,8 @@ public class JpaPicture {
     private Long id;
     private String name;
     private String size;
-    private String url;
+    @Column(columnDefinition="TEXT")
+    private String base64;
     private int ratingValue;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
