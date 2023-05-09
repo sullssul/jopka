@@ -41,7 +41,6 @@ public class UserController {
     }
 
     @PostMapping(value = "/find")
-    @PreAuthorize("hasRole('ADMIN') or hasRole('JURI')")
     public Set<User> findByFilter(@RequestBody FindUserWithFilterRequest request) {
         return service.findWithFilter(request);
     }
