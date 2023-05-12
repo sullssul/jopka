@@ -1,8 +1,6 @@
 services:
   app:
     image: 'jopka:latest'
-    build:
-      context: .
     container_name: app
     ports:
       - "8080:8080"
@@ -22,3 +20,6 @@ services:
     environment:
       - POSTGRES_USER=jopka
       - POSTGRES_PASSWORD=jopka
+volumes:
+  jopka_data:
+    driver: local
