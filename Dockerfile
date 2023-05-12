@@ -1,4 +1,4 @@
-FROM openjdk:17-oracle
+FROM openjdk:17.0.2-slim-buster
 ADD . /src
 WORKDIR /src
 RUN ./mvnw package -DskipTests
