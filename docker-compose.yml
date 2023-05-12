@@ -20,6 +20,8 @@ services:
     environment:
       - POSTGRES_USER=jopka
       - POSTGRES_PASSWORD=jopka
+    volumes:
+      - "jopka_data:/var/lib/postgresql/data"
 volumes:
   jopka_data:
     driver: local
