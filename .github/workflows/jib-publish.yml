@@ -1,15 +1,20 @@
 name: JIB container publish
 
 on:
-  release:
-    types: [created]
+  push:
+    # при push в master
+    branches: [ master ]
+
+  pull_request:
+    # при создании pull request на master
+    branches: [ master ]
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: JIB container build and publish
-        uses: sullssul/jopka
+        uses: MathieuSoysal/jib-container-publish.yml@v2.0.7
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
