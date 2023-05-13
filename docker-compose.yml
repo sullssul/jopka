@@ -22,6 +22,24 @@ services:
       - POSTGRES_PASSWORD=jopka
     volumes:
       - "jopka_data:/var/lib/postgresql/data"
+      -
+    pgadmin:
+      container_name: pgadmin_container
+      image: dpage/pgadmin4:5.7
+      environment:
+        PGADMIN_DEFAULT_EMAIL: "jopka"
+        PGADMIN_DEFAULT_PASSWORD: "jopka"
+        PGADMIN_CONFIG_SERVER_MODE: "False"
+      volumes:
+        - ./pgadmin:/var/lib/pgadmin
+      ports:
+        - "5050:80"
+      restart: unless-stopped
+      deploy:
+        resources:
+          limits:
+            cpus: '0.5'
+            memory: 1G
 volumes:
   jopka_data:
     driver: local
