@@ -14,7 +14,7 @@ jobs:
           # Use docker.io for Docker Hub if empty
           REGISTRY: ghcr.io
           # github.repository as <your-account>/<your-repo>
-          IMAGE_NAME: jopka
+          IMAGE_NAME: ${{ github.repository }}
           # Tag name of the image to publish
           tag-name: ${{ github.event.release.tag_name }}
           # Username to login to registry
