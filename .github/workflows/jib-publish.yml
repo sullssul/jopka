@@ -11,4 +11,5 @@ jobs:
       - name: JIB container build and publish
         uses: sullssul/jopka
         with:
-          PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
