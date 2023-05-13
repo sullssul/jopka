@@ -14,7 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: JIB container build and publish
-        uses: MathieuSoysal/jib-container-publish.yml@v2.0.7
+        uses: MathieuSoysal/jib-container-publish.yml@v2.1.4
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          # Use docker.io for Docker Hub if empty
+          REGISTRY: ghcr.io
+          # github.repository as <your-account>/<your-repo>
+          IMAGE_NAME: ${{ github.repository }}
+          # Tag name of the image to publish
+          tag-name: ${{ github.event.release.tag_name }}
+          # Username to login to registry
+          USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          # Password to login to registry
+          PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+          java-version: 17
