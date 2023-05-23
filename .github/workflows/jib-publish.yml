@@ -46,8 +46,8 @@ jobs:
           user: ${{secrets.SSH_USER}}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          command: |
-            cd ${{ secrets.PROJECT_FOLDER }};
+          command: 
+            cd docker/app
             docker-compose down;
             docker-compose up -d;
             docker system prune --all --force;
