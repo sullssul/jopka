@@ -33,6 +33,10 @@ public class JpaUser implements UserDetails {
     private String city;
     private String country;
     private LocalDate birthday;
+    private String faculty;
+    private String supervisorFullName;
+    private String supervisorPosition;
+    private String supervisorPhoneNumber;
     private String aboutMe;
     @Column(nullable = false)
     private String email;

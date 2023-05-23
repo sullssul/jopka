@@ -21,6 +21,10 @@ public class UpdateUserRequest {
     @NotEmpty
     private String country;
     private String aboutMe;
+    private String faculty;
+    private String supervisorFullName;
+    private String supervisorPosition;
+    private String supervisorPhoneNumber;
     @NotNull
     private LocalDate birthday;
     @Email(message = "Не валидное значение email!", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")

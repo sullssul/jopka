@@ -24,6 +24,10 @@ public abstract class JpaUser_ {
 	public static volatile SingularAttribute<JpaUser, String> firstName;
 	public static volatile SingularAttribute<JpaUser, String> password;
 	public static volatile SingularAttribute<JpaUser, String> phone;
+	public static volatile SingularAttribute<JpaUser, String> faculty;
+	public static volatile SingularAttribute<JpaUser, String> supervisorFullName;
+	public static volatile SingularAttribute<JpaUser, String> supervisorPosition;
+	public static volatile SingularAttribute<JpaUser, String> supervisorPhoneNumber;
 	public static volatile SingularAttribute<JpaUser, JpaOrganization> organization;
 	public static volatile SingularAttribute<JpaUser, Long> id;
 	public static volatile SingularAttribute<JpaUser, String> email;
@@ -43,6 +47,10 @@ public abstract class JpaUser_ {
 	public static final String ID = "id";
 	public static final String EMAIL = "email";
 	public static final String SECOND_NAME = "secondName";
+	public static final String FACULTY = "faculty";
+	public static final String SUPERVISOR_FULL_NAME = "supervisorFullName";
+	public static final String SUPERVISOR_POSITION = "supervisorPosition";
+	public static final String SUPERVISOR_PHONE_NUMBER = "supervisorPhoneNumber";
 
 }
 

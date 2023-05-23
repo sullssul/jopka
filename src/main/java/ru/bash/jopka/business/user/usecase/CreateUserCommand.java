@@ -45,6 +45,10 @@ public class CreateUserCommand {
                 .secondName(request.getSecondName())
                 .organizationId(request.getOrganizationId())
                 .picturesId(new ArrayList<>())
+                .supervisorPhoneNumber(request.getSupervisorPhoneNumber())
+                .supervisorPosition(request.getSupervisorPosition())
+                .supervisorFullName(request.getSupervisorFullName())
+                .faculty(request.getFaculty())
                 .build();
     }
 }

@@ -19,6 +19,10 @@ public class User {
     private String city;
     private String country;
     private String aboutMe;
+    private String faculty;
+    private String supervisorFullName;
+    private String supervisorPosition;
+    private String supervisorPhoneNumber;
     private LocalDate birthday;
     private long roleId;
     private long organizationId;

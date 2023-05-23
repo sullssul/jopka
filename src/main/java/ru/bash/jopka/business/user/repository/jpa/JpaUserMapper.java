@@ -33,6 +33,10 @@ public class JpaUserMapper {
         jpaUser.setBirthday(user.getBirthday());
         jpaUser.setOrganization(getOrganization(user.getOrganizationId()));
         jpaUser.setPictures(getPictures(user.getPicturesId()));
+        jpaUser.setFaculty(user.getFaculty());
+        jpaUser.setSupervisorPosition(user.getSupervisorPosition());
+        jpaUser.setSupervisorFullName(user.getSupervisorFullName());
+        jpaUser.setSupervisorPhoneNumber(user.getSupervisorPhoneNumber());
         return jpaUser;
     }
 
@@ -53,6 +57,10 @@ public class JpaUserMapper {
                 .picturesId(jpaUser.getPictures().stream().map(JpaPicture::getId).collect(Collectors.toList()))
                 .roleId(jpaUser.getRoles().stream().findFirst().orElseThrow(() -> new APIException(HttpStatus.BAD_REQUEST, "Не удалось найти роль")).getId())
                 .organizationId(jpaUser.getOrganization().getId())
+                .faculty(jpaUser.getFaculty())
+                .supervisorFullName(jpaUser.getSupervisorFullName())
+                .supervisorPosition(jpaUser.getSupervisorPosition())
+                .supervisorPhoneNumber(jpaUser.getSupervisorPhoneNumber())
                 .build();
     }
 

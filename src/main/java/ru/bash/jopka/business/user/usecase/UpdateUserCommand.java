@@ -12,7 +12,8 @@ public class UpdateUserCommand {
     private final UserRepository repository;
     private final VerifyUserQuery verifyQuery;
     private final GetUserQuery getQuery;
-    public User execute(UpdateUserRequest request){
+
+    public User execute(UpdateUserRequest request) {
         User user = getQuery.execute(request.getId());
 
         user.setCity(request.getCity());
@@ -27,6 +28,10 @@ public class UpdateUserCommand {
         user.setPassword(request.getPassword());
         user.setPhone(request.getPhone());
         user.setRoleId(request.getRoleId());
+        user.setFaculty(request.getFaculty());
+        user.setSupervisorFullName(request.getSupervisorFullName());
+        user.setSupervisorPhoneNumber(request.getSupervisorPhoneNumber());
+        user.setSupervisorPosition(request.getSupervisorPosition());
 
         verifyQuery.execute(user);
 
